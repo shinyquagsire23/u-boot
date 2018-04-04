@@ -1,0 +1,12 @@
+if TARGET_HAC_001
+
+config SYS_BOARD
+	default "hac-001"
+
+config SYS_VENDOR
+	default "nintendo"
+
+config SYS_CONFIG_NAME
+	default "hac-001"
+
+endif

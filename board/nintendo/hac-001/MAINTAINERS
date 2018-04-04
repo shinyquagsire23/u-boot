@@ -1,0 +1,6 @@
+HAC-001 BOARD
+M:	Max Thomas <mtinc2@gmail.com>
+S:	Maintained
+F:	board/nintendo/hac-001/
+F:	include/configs/hac-001.h
+F:	configs/hac-001_defconfig

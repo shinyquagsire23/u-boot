@@ -159,8 +159,8 @@ static int uart_configs[] = {
 	-1,
 #else	/* Tegra210 */
 	FUNCMUX_UART1_UART1,	/* UARTA */
-	-1,
-	-1,
+	FUNCMUX_UART2_UART2,	/* UARTB */
+	FUNCMUX_UART3_UART3,	/* UARTC */
 	FUNCMUX_UART4_UART4,	/* UARTD */
 	-1,
 #endif

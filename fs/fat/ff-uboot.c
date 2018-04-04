@@ -66,7 +66,7 @@ DRESULT disk_write(BYTE pdrv, const BYTE *buff, DWORD sector, UINT count)
 	temp = malloc_cache_aligned(count * fat_dev->blksz);
 	memcpy(temp, buff, count * fat_dev->blksz);
 
-	ret = blk_dwrite(fat_dev, fat_part->start + sector, count, );
+	ret = blk_dwrite(fat_dev, fat_part->start + sector, count, temp);
 	free(temp);
 
 	if (ret != count)

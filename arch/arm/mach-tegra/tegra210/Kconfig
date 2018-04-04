@@ -3,6 +3,13 @@ if TEGRA210
 choice
 	prompt "Tegra210 board select"
 
+config TARGET_HAC_001
+	bool "Nintendo Switch (HAC-001) board"
+	select BOARD_LATE_INIT
+	help
+	  HAC-001 is the Tegra T210 variant of the Nintendo Switch game
+	  console
+
 config TARGET_E2220_1170
 	bool "NVIDIA Tegra210 E2220-1170 board"
 	select BOARD_LATE_INIT
@@ -43,6 +50,7 @@ config SYS_SOC
 config SYS_INIT_SP_BSS_OFFSET
 	default 524288
 
+source "board/nintendo/hac-001/Kconfig"
 source "board/nvidia/e2220-1170/Kconfig"
 source "board/nvidia/p2371-0000/Kconfig"
 source "board/nvidia/p2371-2180/Kconfig"
