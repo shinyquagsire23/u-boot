@@ -36,23 +36,39 @@ DSTATUS disk_status(BYTE pdrv)
 DRESULT disk_read(BYTE pdrv, BYTE *buff, DWORD sector, UINT count)
 {
 	int ret;
+	void *temp;
 
+	if (!fat_dev) return -1;
 	debug("%s(sector=%d, count=%u)\n", __func__, sector, count);
 
-	ret = blk_dread(fat_dev, fat_part->start + sector, count, buff);
-	if (ret != count)
-		return RES_ERROR;
+	temp = malloc_cache_aligned(count * fat_dev->blksz);
 
+	ret = blk_dread(fat_dev, fat_part->start + sector, count, temp);
+	if (ret != count) {
+		free(temp);
+		return RES_ERROR;
+	}
+
+	memcpy(buff, temp, count * fat_dev->blksz);
+
+	free(temp);
 	return RES_OK;
 }
 
 DRESULT disk_write(BYTE pdrv, const BYTE *buff, DWORD sector, UINT count)
 {
 	int ret;
+	void *temp;
 
+	if (!fat_dev) return -1;
 	debug("%s(sector=%d, count=%u)\n", __func__, sector, count);
 
-	ret = blk_dwrite(fat_dev, fat_part->start + sector, count, buff);
+	temp = malloc_cache_aligned(count * fat_dev->blksz);
+	memcpy(temp, buff, count * fat_dev->blksz);
+
+	ret = blk_dwrite(fat_dev, fat_part->start + sector, count, );
+	free(temp);
+
 	if (ret != count)
 		return RES_ERROR;
 
@@ -203,14 +219,14 @@ int fat_read_file(const char *filename, void *buf, loff_t offset, loff_t len,
 	debug("%s(filename=%s, offset=%d, len=%d)\n", __func__, filename,
 	      (int)offset, (int)len);
 
-	if (!len)
-		len = -1;
-
 	ff_ret = f_open(&fil, filename, FA_READ);
 	if (ff_ret != FR_OK) {
 		debug("f_open() failed: %d\n", ff_ret);
 		goto err;
 	}
+
+	if (!len)
+		len = f_size(&fil) - offset;
 
 	ff_ret = f_lseek(&fil, offset);
 	if (ff_ret != FR_OK) {
@@ -249,9 +265,6 @@ int file_fat_write(const char *filename, void *buf, loff_t offset, loff_t len,
 
 	debug("%s(filename=%s, offset=%d, len=%d)\n", __func__, filename,
 	      (int)offset, (int)len);
-
-	if (!len)
-		len = -1;
 
 	ff_ret = f_open(&fil, filename, FA_WRITE | FA_OPEN_ALWAYS);
 	if (ff_ret != FR_OK) {
