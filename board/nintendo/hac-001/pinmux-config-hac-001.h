@@ -10,20 +10,20 @@
 static const struct tegra_gpio_config hac_001_gpio_inits[] = {
 	/*        port, pin, init_val */
 	GPIO_INIT(Z,    4,   OUT0),
-	GPIO_INIT(E,    4,   OUT0), // Sdcard power
-	GPIO_INIT(H,    4,   OUT0), // BT reset
+	GPIO_INIT(E,    4,   OUT0),	// Sdcard power
+	GPIO_INIT(H,    4,   OUT0),	// BT reset
 	GPIO_INIT(BB,   2,   IN),
-	GPIO_INIT(BB,   3,   OUT0), // GcAsic Power
+	GPIO_INIT(BB,   3,   OUT0),	// GcAsic Power
 	GPIO_INIT(BB,   4,   IN),
 	GPIO_INIT(E,    5,   IN),
-	GPIO_INIT(S,    0,   IN),  // DebugPadDriver
+	GPIO_INIT(S,    0,   IN),	// DebugPadDriver
 	GPIO_INIT(S,    1,   IN),
-	GPIO_INIT(S,    6,   OUT0), // bq24192 charge enable
+	GPIO_INIT(S,    6,   OUT0),	// bq24192 charge enable
 	GPIO_INIT(S,    7,   IN),
-	GPIO_INIT(E,    6,   IN),  // Joy-Con(L) insertion
-	GPIO_INIT(A,    5,   OUT0), // Fan (normal)
+	GPIO_INIT(E,    6,   IN),	// Joy-Con(L) insertion
+	GPIO_INIT(A,    5,   OUT0),	// Fan (normal)
 	GPIO_INIT(P,    0,   IN),
-	GPIO_INIT(S,    3,   IN), // GcAsic irq
+	GPIO_INIT(S,    3,   IN),	// GcAsic irq
 	GPIO_INIT(P,    5,   IN),
 	GPIO_INIT(P,    4,   IN),
 	GPIO_INIT(P,    3,   IN),
@@ -31,61 +31,61 @@ static const struct tegra_gpio_config hac_001_gpio_inits[] = {
 	GPIO_INIT(X,    4,   IN),
 	GPIO_INIT(V,    6,   IN),
 	GPIO_INIT(X,    2,   IN),
-	GPIO_INIT(X,    1,   IN), // Touchscreen irq
+	GPIO_INIT(X,    1,   IN),	// Touchscreen irq
 	GPIO_INIT(X,    5,   IN),
-	GPIO_INIT(X,    6,   IN), // Vol Up
-	GPIO_INIT(X,    7,   IN), // Vol Down
-	GPIO_INIT(Y,    0,   IN), // max17050 irq
+	GPIO_INIT(X,    6,   IN),	// Vol Up
+	GPIO_INIT(X,    7,   IN),	// Vol Down
+	GPIO_INIT(Y,    0,   IN),	// max17050 irq
 	GPIO_INIT(Y,    1,   IN),
-	GPIO_INIT(V,    1,   OUT0), // backlight
-	GPIO_INIT(V,    2,   OUT0), // backlight
-	GPIO_INIT(K,    5,   OUT0), // bq24192 OTG sharge select
-	GPIO_INIT(V,    5,   OUT0), // PD related
-	GPIO_INIT(Z,    0,   IN), // bq24192 irq
+	GPIO_INIT(V,    1,   OUT0),	// backlight
+	GPIO_INIT(V,    2,   OUT0),	// backlight
+	GPIO_INIT(K,    5,   OUT0),	// bq24192 OTG sharge select
+	GPIO_INIT(V,    5,   OUT0),	// PD related
+	GPIO_INIT(Z,    0,   IN),	// bq24192 irq
 	GPIO_INIT(Z,    2,   IN),
 	GPIO_INIT(Z,    3,   IN),
-	GPIO_INIT(J,    7,   OUT0), // touchscreen power
+	GPIO_INIT(J,    7,   OUT0),	// touchscreen power
 	GPIO_INIT(K,    0,   IN),
 	GPIO_INIT(K,    1,   IN),
 	GPIO_INIT(K,    2,   IN),
-	GPIO_INIT(K,    4,   IN), // bm92t36 irq
+	GPIO_INIT(K,    4,   IN),	// bm92t36 irq
 	GPIO_INIT(K,    6,   IN),
 	GPIO_INIT(K,    7,   IN),
-	GPIO_INIT(K,    3,   OUT0), // Joy-Con(R) charge
-	GPIO_INIT(CC,   3,   OUT0), // Joy-Con(L) charge
+	GPIO_INIT(K,    3,   OUT0),	// Joy-Con(R) charge
+	GPIO_INIT(CC,   3,   OUT0),	// Joy-Con(L) charge
 	GPIO_INIT(H,    0,   IN),
 	GPIO_INIT(H,    1,   OUT0),
-	GPIO_INIT(H,    3,   OUT0), // BT wake
+	GPIO_INIT(H,    3,   OUT0),	// BT wake
 	GPIO_INIT(H,    5,   IN),
 	GPIO_INIT(H,    7,   IN),
-	GPIO_INIT(I,    0,   OUT0), // Backlight
-	GPIO_INIT(I,    1,   OUT0), // Backlight
-	GPIO_INIT(H,    6,   IN), // Joy-Con(R) insertion
+	GPIO_INIT(I,    0,   OUT0),	// Backlight
+	GPIO_INIT(I,    1,   OUT0),	// Backlight
+	GPIO_INIT(H,    6,   IN),	// Joy-Con(R) insertion
 	GPIO_INIT(CC,   2,   IN),
-	GPIO_INIT(CC,   4,   OUT0), // Fan (high power)
+	GPIO_INIT(CC,   4,   OUT0),	// Fan (high power)
 	GPIO_INIT(H,    2,   IN),
-	GPIO_INIT(Z,    1,   IN), // SDcard detect
-	GPIO_INIT(J,    5,   OUT0), // bq24192 OTG charge select
-	GPIO_INIT(L,    0,   OUT0), // bq24192 OTG charge select
+	GPIO_INIT(Z,    1,   IN),	// SDcard detect
+	GPIO_INIT(J,    5,   OUT0),	// bq24192 OTG charge select
+	GPIO_INIT(L,    0,   OUT0),	// bq24192 OTG charge select
 	GPIO_INIT(H,    6,   IN),
 	GPIO_INIT(E,    6,   IN),
 
-	GPIO_INIT(G,    3,   IN), // Joy-Con(R) monitor
-	GPIO_INIT(D,    4,   IN), // Joy-Con(L) monitor
+	GPIO_INIT(G,    3,   IN),	// Joy-Con(R) monitor
+	GPIO_INIT(D,    4,   IN),	// Joy-Con(L) monitor
 	GPIO_INIT(BB,   1,   IN),
 	GPIO_INIT(B,    4,   IN),
 	GPIO_INIT(B,    5,   IN),
-	GPIO_INIT(E,    1,   OUT0), // USB power
+	GPIO_INIT(E,    1,   OUT0),	// USB power
 	GPIO_INIT(E,    7,   IN),
 	GPIO_INIT(S,    2,   IN),
-    GPIO_INIT(S,    5,   OUT0), // USB root port 4 power
-    GPIO_INIT(T,    0,   OUT0), // USB root port 3 power
-    GPIO_INIT(C,    0,   OUT0), // HDMI hotplug
-    GPIO_INIT(C,    1,   OUT0), // USB root port 2 power
-    GPIO_INIT(C,    2,   OUT0), // HDMI hotplug
-    GPIO_INIT(I,    2,   IN),
-    GPIO_INIT(CC,   6,   IN),
-    GPIO_INIT(CC,   1,   IN), // HDMI hotplug
+	GPIO_INIT(S,    5,   OUT0),	// USB root port 4 power
+	GPIO_INIT(T,    0,   OUT0),	// USB root port 3 power
+	GPIO_INIT(C,    0,   OUT0),	// HDMI hotplug
+	GPIO_INIT(C,    1,   OUT0),	// USB root port 2 power
+	GPIO_INIT(C,    2,   OUT0),	// HDMI hotplug
+	GPIO_INIT(I,    2,   IN),
+	GPIO_INIT(CC,   6,   IN),
+	GPIO_INIT(CC,   1,   IN),	// HDMI hotplug
 };
 
 #define PINCFG(_pingrp, _mux, _pull, _tri, _io, _od, _e_io_hv)	\
