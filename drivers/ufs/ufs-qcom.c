@@ -243,6 +243,14 @@ static int ufs_qcom_power_up_sequence(struct ufs_hba *hba)
 		return ret;
 	}
 
+	/* power off phy, because if we are resetting everything we need the phy on count to reset */
+	ret = generic_phy_power_off(&phy);
+	if (ret) {
+		dev_err(hba->dev, "%s: phy power off failed, ret = %d\n",
+			__func__, ret);
+		goto out_disable_phy;
+	}
+
 	/* power on phy */
 	ret = generic_phy_power_on(&phy);
 	if (ret) {
@@ -477,12 +485,26 @@ static int ufs_qcom_link_startup_notify(struct ufs_hba *hba,
 					enum ufs_notify_change_status status)
 {
 	int err = 0;
+	u32 reg;
 
 	switch (status) {
 	case PRE_CHANGE:
-		err = ufs_qcom_set_core_clk_ctrl(hba);
+		// TODO(shinyquagsire23): low-power-only ifdef or quirk
+
+		/*err = ufs_qcom_set_core_clk_ctrl(hba);
 		if (err)
-			dev_err(hba->dev, "cfg core clk ctrl failed\n");
+			dev_err(hba->dev, "cfg core clk ctrl failed\n");*/
+
+		err = ufshcd_dme_get(hba, UIC_ARG_MIB(PA_VS_CONFIG_REG1), &reg);
+		if (err) {
+			dev_err(hba->dev, "cfg get clk failed\n");
+		}
+
+		err = ufshcd_dme_set(hba, UIC_ARG_MIB(PA_VS_CONFIG_REG1), reg | 0x1000);
+		if (err) {
+			dev_err(hba->dev, "cfg set clk failed\n");
+		}
+
 		/*
 		 * Some UFS devices (and may be host) have issues if LCC is
 		 * enabled. So we are setting PA_Local_TX_LCC_Enable to 0
@@ -490,8 +512,17 @@ static int ufs_qcom_link_startup_notify(struct ufs_hba *hba,
 		 * and device TX LCC are disabled once link startup is
 		 * completed.
 		 */
-		if (ufs_qcom_get_local_unipro_ver(hba) != UFS_UNIPRO_VER_1_41)
-			err = ufshcd_dme_set(hba, UIC_ARG_MIB(PA_LOCAL_TX_LCC_ENABLE), 0);
+		/*if (ufs_qcom_get_local_unipro_ver(hba) != UFS_UNIPRO_VER_1_41)
+			err = ufshcd_dme_set(hba, UIC_ARG_MIB(PA_LOCAL_TX_LCC_ENABLE), 0);*/
+
+		err = ufshcd_dme_set(hba, UIC_ARG_MIB(PA_AVAILTXDATALANES), 1);
+		if (err) {
+			dev_err(hba->dev, "cfg num tx lanes failed\n");
+		}
+		err = ufshcd_dme_set(hba, UIC_ARG_MIB(PA_AVAILRXDATALANES), 1);
+		if (err) {
+			dev_err(hba->dev, "cfg num rx lanes failed\n");
+		}
 
 		break;
 	default:

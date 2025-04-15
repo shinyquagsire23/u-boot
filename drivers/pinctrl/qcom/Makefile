@@ -15,3 +15,4 @@ obj-$(CONFIG_PINCTRL_QCOM_SM8250) += pinctrl-sm8250.o
 obj-$(CONFIG_PINCTRL_QCOM_SM8550) += pinctrl-sm8550.o
 obj-$(CONFIG_PINCTRL_QCOM_SM8650) += pinctrl-sm8650.o
 obj-$(CONFIG_PINCTRL_QCOM_X1E80100) += pinctrl-x1e80100.o
+obj-$(CONFIG_PINCTRL_QCOM_SXR2250) += pinctrl-sxr2250.o

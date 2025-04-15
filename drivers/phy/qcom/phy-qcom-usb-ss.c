@@ -140,6 +140,7 @@ static struct phy_ops ssphy_ops = {
 
 static const struct udevice_id ssphy_ids[] = {
 	{ .compatible = "qcom,usb-ss-28nm-phy" },
+	{ .compatible = "qcom,usb-ssphy-qmp-dp-combo" },
 	{ }
 };
 

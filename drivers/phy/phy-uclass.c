@@ -314,11 +314,13 @@ int generic_phy_power_on(struct phy *phy)
 		return 0;
 	}
 
-	ret = regulator_set_enable_if_allowed(counts->supply, true);
-	if (ret && ret != -ENOSYS) {
-		dev_err(phy->dev, "PHY: Failed to enable regulator %s: %d.\n",
-			counts->supply->name, ret);
-		return ret;
+	if (counts->supply) {
+		ret = regulator_set_enable_if_allowed(counts->supply, true);
+		if (ret && ret != -ENOSYS) {
+			dev_err(phy->dev, "PHY: Failed to enable regulator %s: %d.\n",
+				counts->supply->name, ret);
+			return ret;
+		}
 	}
 
 	ops = phy_dev_ops(phy->dev);
@@ -327,7 +329,9 @@ int generic_phy_power_on(struct phy *phy)
 		if (ret) {
 			dev_err(phy->dev, "PHY: Failed to power on %s: %d.\n",
 				phy->dev->name, ret);
-			regulator_set_enable_if_allowed(counts->supply, false);
+			if (counts->supply) {
+				regulator_set_enable_if_allowed(counts->supply, false);
+			}
 			return ret;
 		}
 	}
@@ -363,10 +367,12 @@ int generic_phy_power_off(struct phy *phy)
 	}
 	counts->power_on_count = 0;
 
-	ret = regulator_set_enable_if_allowed(counts->supply, false);
-	if (ret && ret != -ENOSYS)
-		dev_err(phy->dev, "PHY: Failed to disable regulator %s: %d.\n",
-			counts->supply->name, ret);
+	if (counts->supply) {
+		ret = regulator_set_enable_if_allowed(counts->supply, false);
+		if (ret && ret != -ENOSYS)
+			dev_err(phy->dev, "PHY: Failed to disable regulator %s: %d.\n",
+				counts->supply->name, ret);
+	}
 
 	return 0;
 }

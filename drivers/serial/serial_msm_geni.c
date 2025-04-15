@@ -502,7 +502,15 @@ static int geni_set_oversampling(struct udevice *dev)
 	 * It could happen that GENI SE IP is missing in the board's device
 	 * tree or GENI UART node is a direct child of SoC device tree node.
 	 */
-	if (!ofnode_device_is_compatible(parent_node, "qcom,geni-se-qup")) {
+	if (ofnode_has_property(dev_ofnode(dev), "qcom,wrapper-core")) {
+		parent_node = ofnode_parse_phandle(dev_ofnode(dev),
+				"qcom,wrapper-core", 0);
+		if (!ofnode_valid(parent_node)) {
+			pr_err("%s: UART node has no wrapper core defined.\n", __func__);
+			return -ENODEV;
+		}
+	}
+	else if (!ofnode_device_is_compatible(parent_node, "qcom,geni-se-qup")) {
 		pr_err("%s: UART node must be a child of geniqup node\n",
 		       __func__);
 		return -ENODEV;
@@ -567,8 +575,9 @@ static int msm_serial_probe(struct udevice *dev)
 		return ret;
 
 	/* No need to reinitialize the UART after relocation */
-	if (gd->flags & GD_FLG_RELOC)
+	if (gd->flags & GD_FLG_RELOC) {
 		return 0;
+	}
 
 	geni_serial_init(dev);
 	msm_geni_serial_setup_rx(dev);
@@ -591,6 +600,7 @@ static int msm_serial_ofdata_to_platdata(struct udevice *dev)
 
 static const struct udevice_id msm_serial_ids[] = {
 	{ .compatible = "qcom,geni-debug-uart" },
+	{ .compatible = "qcom,msm-geni-console" },
 	{ }
 };
 
@@ -607,6 +617,7 @@ U_BOOT_DRIVER(serial_msm_geni) = {
 
 static const struct udevice_id geniqup_ids[] = {
 	{ .compatible = "qcom,geni-se-qup" },
+	{ .compatible = "qcom,qupv3-geni-se" },
 	{ }
 };
 
@@ -639,11 +650,13 @@ static struct udevice init_dev = {
 
 static inline void _debug_uart_init(void)
 {
+#ifndef CONFIG_DEBUG_UART_SKIP_INIT
 	phys_addr_t base = CONFIG_VAL(DEBUG_UART_BASE);
 
 	geni_serial_init(&init_dev);
 	geni_serial_baud(base, CLK_DIV, CONFIG_BAUDRATE);
 	qcom_geni_serial_start_tx(base);
+#endif
 }
 
 static inline void _debug_uart_putc(int ch)

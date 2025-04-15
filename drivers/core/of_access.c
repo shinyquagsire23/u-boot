@@ -275,7 +275,7 @@ bool of_device_is_available(const struct device_node *device)
 		return true;
 
 	if (statlen > 0) {
-		if (!strcmp(status, "okay"))
+		if (!strcmp(status, "okay") || !strcmp(status, "ok"))
 			return true;
 	}
 

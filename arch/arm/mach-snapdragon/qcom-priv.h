@@ -8,7 +8,7 @@
 #if IS_ENABLED(CONFIG_EFI_HAVE_CAPSULE_SUPPORT)
 void qcom_configure_capsule_updates(void);
 #else
-void qcom_configure_capsule_updates(void) {}
+static void qcom_configure_capsule_updates(void) {}
 #endif /* EFI_HAVE_CAPSULE_SUPPORT */
 
 #if CONFIG_IS_ENABLED(OF_LIVE)

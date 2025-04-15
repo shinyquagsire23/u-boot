@@ -43,6 +43,7 @@ static struct mm_region rbx_mem_map[CONFIG_NR_DRAM_BANKS + 2] = { { 0 } };
 
 struct mm_region *mem_map = rbx_mem_map;
 
+#ifdef CONFIG_ARMV8_PSCI
 static void show_psci_version(void)
 {
 	struct arm_smccc_res res;
@@ -53,6 +54,7 @@ static void show_psci_version(void)
 	      PSCI_VERSION_MAJOR(res.a0),
 	      PSCI_VERSION_MINOR(res.a0));
 }
+#endif // CONFIG_ARMV8_PSCI
 
 /* We support booting U-Boot with an internal DT when running as a first-stage bootloader
  * or for supporting quirky devices where it's easier to leave the downstream DT in place
@@ -144,7 +146,9 @@ void __weak qcom_board_init(void)
 
 int board_init(void)
 {
+#ifdef CONFIG_ARMV8_PSCI
 	show_psci_version();
+#endif // CONFIG_ARMV8_PSCI
 	qcom_of_fixup_nodes();
 	qcom_board_init();
 	return 0;
@@ -468,6 +472,9 @@ static void carve_out_reserved_memory(void)
 	 * attempt to access them, causing a security exception.
 	 */
 	parent = fdt_path_offset(gd->fdt_blob, "/reserved-memory");
+	if (parent <= 0) {
+		parent = fdt_path_offset(gd->fdt_blob, "/reserved_memory");
+	}
 	if (parent <= 0) {
 		log_err("No reserved memory regions found\n");
 		return;

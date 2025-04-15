@@ -271,8 +271,10 @@ int stdio_deregister_dev(struct stdio_dev *dev, int force)
 			/* Device is assigned -> report error */
 			return -EBUSY;
 		}
-		strlcpy(&temp_names[i][0], stdio_devices[i]->name,
-			sizeof(temp_names[i]));
+		if (stdio_devices[i] && stdio_devices[i]->name) {
+			strlcpy(&temp_names[i][0], stdio_devices[i]->name,
+				sizeof(temp_names[i]));
+		}
 	}
 
 	list_del(&dev->list);

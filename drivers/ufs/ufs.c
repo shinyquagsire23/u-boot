@@ -247,6 +247,9 @@ int ufshcd_dme_set_attr(struct ufs_hba *hba, u32 attr_sel, u8 attr_set,
 	uic_cmd.argument2 = UIC_ARG_ATTR_TYPE(attr_set);
 	uic_cmd.argument3 = mib_val;
 
+	debug("%s: attr-id 0x%x set val 0x%x\n",
+				set, UIC_GET_ATTR_ID(attr_sel), mib_val);
+
 	do {
 		/* for peer attributes we retry upon failure */
 		ret = ufshcd_send_uic_cmd(hba, &uic_cmd);
@@ -298,6 +301,9 @@ int ufshcd_dme_get_attr(struct ufs_hba *hba, u32 attr_sel,
 
 	if (mib_val && !ret)
 		*mib_val = uic_cmd.argument3;
+
+	debug("%s: attr-id 0x%x get val 0x%x\n",
+				get, UIC_GET_ATTR_ID(attr_sel), uic_cmd.argument3);
 
 	return ret;
 }
@@ -1929,6 +1935,8 @@ int ufs_start(struct ufs_hba *hba)
 		return ret;
 	}
 
+	// TODO(shinyquagsire23): low-power-only ifdef or quirk
+#if 0
 	if (ufshcd_get_max_pwr_mode(hba)) {
 		dev_err(hba->dev,
 			"%s: Failed getting max supported power mode\n",
@@ -1945,6 +1953,7 @@ int ufs_start(struct ufs_hba *hba)
 		debug("UFS Device %s is up!\n", hba->dev->name);
 		ufshcd_print_pwr_info(hba);
 	}
+#endif
 
 	return 0;
 }

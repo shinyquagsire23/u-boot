@@ -90,6 +90,13 @@ config PINCTRL_QCOM_X1E80100
 	  Say Y here to enable support for pinctrl on the Snapdragon X1E80100 SoC,
 	  as well as the associated GPIO driver.
 
+config PINCTRL_QCOM_SXR2250
+	bool "Qualcomm SXR2250 GCC"
+	select PINCTRL_QCOM
+	help
+	  Say Y here to enable support for pinctrl on the Snapdragon SXR2250 SoC,
+	  as well as the associated GPIO driver.
+
 endmenu
 
 endif

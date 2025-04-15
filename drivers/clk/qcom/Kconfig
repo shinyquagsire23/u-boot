@@ -119,6 +119,14 @@ config CLK_QCOM_X1E80100
 	  on the Snapdragon X1E80100 SoC. This driver supports the clocks
 	  and resets exposed by the GCC hardware block.
 
+config CLK_QCOM_SXR2250
+	bool "Qualcomm SXR2250 (XR2/XR2+ Gen 2) GCC"
+	select CLK_QCOM
+	help
+	  Say Y here to enable support for the Global Clock Controller
+	  on the Snapdragon SXR2250 SoC. This driver supports the clocks
+	  and resets exposed by the GCC hardware block.
+
 endmenu
 
 config CLK_QCOM_DEBUG
