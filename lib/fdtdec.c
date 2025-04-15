@@ -324,7 +324,7 @@ int fdtdec_get_is_enabled(const void *blob, int node)
 	 */
 	cell = fdt_getprop(blob, node, "status", NULL);
 	if (cell)
-		return strcmp(cell, "okay") == 0;
+		return !strcmp(cell, "okay") || !strcmp(cell, "ok");
 	return 1;
 }
 
