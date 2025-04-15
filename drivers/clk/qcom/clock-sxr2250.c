@@ -15,7 +15,7 @@
 //#include <dt-bindings/clock/qcom,gcc-sm8250.h>
 #include <dt-bindings/clock/qcom,gcc-diwali.h>
 #include <dt-bindings/clock/qcom,gcc-anorak.h>
-#include <dt-bindings/clock/qcom,tcsrcc.h>
+//#include <dt-bindings/clock/qcom,tcsrcc.h>
 
 
 #include "clock-qcom.h"
