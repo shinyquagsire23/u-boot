@@ -1,7 +1,0 @@
-&soc {
-	mmrm_vm_be: qcom,mmrm-vm-be {
-		compatible = "qcom,mmrm-vm-be";
-		status = "disable";
-	};
-};
-

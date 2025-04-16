@@ -1,4 +1,0 @@
-#include "parrot-qrd.dtsi"
-
-&soc {
-};

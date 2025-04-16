@@ -1,5 +1,0 @@
-#include "montaguep.dtsi"
-#include "ravelin-low-memory.dtsi"
-/ {
-};
-

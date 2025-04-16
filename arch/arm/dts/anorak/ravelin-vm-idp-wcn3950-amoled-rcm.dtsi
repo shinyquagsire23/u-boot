@@ -1,4 +1,0 @@
-#include "ravelin-vm-idp.dtsi"
-
-&soc {
-};

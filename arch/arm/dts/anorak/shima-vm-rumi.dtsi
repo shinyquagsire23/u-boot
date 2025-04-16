@@ -1,5 +1,0 @@
-&soc {
-	timer {
-		clock-frequency = <5000000>;
-	};
-};

@@ -1,7 +1,0 @@
-#include "ravelinp.dtsi"
-#include "ravelin-low-memory.dtsi"
-/ {
-};
-
-&soc {
-};

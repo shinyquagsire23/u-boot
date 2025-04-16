@@ -1,5 +1,0 @@
-#include "ipcc-test.dtsi"
-
-&soc {
-	/delete-node/ ipcc-self-ping-slpi;
-};

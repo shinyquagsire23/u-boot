@@ -1,5 +1,0 @@
-#include "ravelin-idp.dtsi"
-
-&soc {
-};
-

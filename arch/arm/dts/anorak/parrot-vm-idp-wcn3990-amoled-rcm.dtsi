@@ -1,4 +1,0 @@
-#include "parrot-vm-idp.dtsi"
-
-&soc {
-};
