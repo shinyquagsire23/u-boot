@@ -31,6 +31,7 @@
 #include <linux/bitfield.h>
 #include <linux/math64.h>
 #include <linux/time.h>
+#include <linux/delay.h>
 
 #include "core.h"
 #include "gadget.h"
@@ -302,6 +303,7 @@ static int dwc3_event_buffers_setup(struct dwc3 *dwc)
 		dev_dbg(dwc->dev, "Event buf %p dma %08llx length %d\n",
 				evt->buf, (unsigned long long) evt->dma,
 				evt->length);
+		mdelay(10); // TODO: why?
 
 		evt->lpos = 0;
 
