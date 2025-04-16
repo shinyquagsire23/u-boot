@@ -107,12 +107,6 @@ void sysreset_walk_halt(enum sysreset_t type)
 	else
 		log_err("System reset not supported on this platform\n");
 
-	// TODO(shinyquagsire23): modify the device tree for pshold
-	__asm__ volatile("ldr x0, =0xc264000\n"
-		    "ldr w1, [x0]\n"
-		    "and w1, w1, #0xFFFFFFFE\n"
-		    "str w1, [x0]\n"
-		    "b .\n");
 	hang();
 }
 
