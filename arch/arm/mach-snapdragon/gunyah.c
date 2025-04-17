@@ -180,7 +180,7 @@ static void gunyah_api_info(struct gunyah_api_info *info)
 	gunyah_print_info(info);
 }
 
-static struct gunyah_create_partition_result gunyah_create_partition(u64 part_capid, u64 cspace_capid)
+static struct gunyah_create_partition_result __maybe_unused gunyah_create_partition(u64 part_capid, u64 cspace_capid)
 {
 	struct pt_regs args = { 0 };
 	struct gunyah_create_partition_result res;
