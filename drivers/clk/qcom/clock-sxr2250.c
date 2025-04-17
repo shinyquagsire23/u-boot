@@ -12,11 +12,7 @@
 #include <asm/io.h>
 #include <linux/bug.h>
 #include <linux/bitops.h>
-//#include <dt-bindings/clock/qcom,gcc-sm8250.h>
-#include <dt-bindings/clock/qcom,gcc-diwali.h>
 #include <dt-bindings/clock/qcom,gcc-anorak.h>
-//#include <dt-bindings/clock/qcom,tcsrcc.h>
-
 
 #include "clock-qcom.h"
 
@@ -73,12 +69,6 @@ static const struct freq_tbl ftbl_gcc_ufs_phy_ice_core_clk_src[] = {
     F(100000000, CFG_CLK_SRC_GPLL0_EVEN, 3, 0, 0),
     F(201500000, CFG_CLK_SRC_GPLL0, 4, 0, 0),
     F(403000000, CFG_CLK_SRC_GPLL0, 2, 0, 0),
-    { }
-};
-
-static const struct freq_tbl ftbl_gcc_ufs_phy_phy_aux_clk_src[] = {
-    F(9600000, CFG_CLK_SRC_CXO, 2, 0, 0),
-    F(19200000, CFG_CLK_SRC_CXO, 1, 0, 0),
     { }
 };
 
@@ -302,8 +292,8 @@ static int sxr2250_enable(struct clk *clk)
 }
 
 static int sxr2250_probe(struct udevice *dev) {
-    struct msm_clk_data *data = (struct msm_clk_data *)dev_get_driver_data(dev);
-    struct msm_clk_priv *priv = dev_get_priv(dev);
+    //struct msm_clk_data *data = (struct msm_clk_data *)dev_get_driver_data(dev);
+    //struct msm_clk_priv *priv = dev_get_priv(dev);
 
     /*
      * From Linux? TODO?

@@ -217,6 +217,11 @@
 #define GCC_HLOS1_VOTE_TURING_MMU_TBU1_CLK			207
 #define GCC_PWM0_XO512_DIV_CLK_SRC				208
 
+/* GCC power domains */
+#define GCC_PCIE_0_GDSC					0
+#define GCC_UFS_PHY_GDSC				1
+#define GCC_USB30_PRIM_GDSC				2
+
 /* GCC resets */
 #define GCC_CAMERA_BCR						0
 #define GCC_DISPLAY1_BCR					1

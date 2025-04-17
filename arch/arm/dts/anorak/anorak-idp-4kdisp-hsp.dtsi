@@ -1,4 +1,0 @@
-#include "anorak-idp.dtsi"
-
-&soc {
-};
