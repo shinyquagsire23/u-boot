@@ -639,11 +639,13 @@ static struct udevice init_dev = {
 
 static inline void _debug_uart_init(void)
 {
+#ifndef CONFIG_DEBUG_UART_SKIP_INIT
 	phys_addr_t base = CONFIG_VAL(DEBUG_UART_BASE);
 
 	geni_serial_init(&init_dev);
 	geni_serial_baud(base, CLK_DIV, CONFIG_BAUDRATE);
 	qcom_geni_serial_start_tx(base);
+#endif
 }
 
 static inline void _debug_uart_putc(int ch)
