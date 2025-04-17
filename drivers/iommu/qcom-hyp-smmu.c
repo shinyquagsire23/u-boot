@@ -390,6 +390,7 @@ static const struct udevice_id qcom_smmu500_ids[] = {
 	{ .compatible = "qcom,sdm845-smmu-500" },
 	{ .compatible = "qcom,sc7280-smmu-500" },
 	{ .compatible = "qcom,smmu-500", },
+	{ .compatible = "qcom,qsmmu-v500", },
 	{ /* sentinel */ }
 };
 
