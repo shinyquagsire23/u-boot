@@ -10,7 +10,6 @@
 #include <asm/global_data.h>
 #include <asm/system.h>
 #include <linux/bitops.h>
-#include <asm/io.h>
 
 DECLARE_GLOBAL_DATA_PTR;
 
@@ -20,9 +19,8 @@ DECLARE_GLOBAL_DATA_PTR;
 unsigned long notrace get_tbclk(void)
 {
 	unsigned long cntfrq;
-	//asm volatile("mrs %0, cntfrq_el0" : "=r" (cntfrq));
-	// TODO(shinyquagsire23): Proper Kconfig and and device tree reading for this
-	return readl(0x17421010);//cntfrq;
+	asm volatile("mrs %0, cntfrq_el0" : "=r" (cntfrq));
+	return cntfrq;
 }
 
 #ifdef CONFIG_SYS_FSL_ERRATUM_A008585
@@ -38,7 +36,6 @@ unsigned long notrace get_tbclk(void)
  */
 unsigned long timer_read_counter(void)
 {
-#if 0
 	unsigned long cntpct;
 	unsigned long temp;
 
@@ -49,11 +46,8 @@ unsigned long timer_read_counter(void)
 		asm volatile("mrs %0, cntpct_el0" : "=r" (cntpct));
 		asm volatile("mrs %0, cntpct_el0" : "=r" (temp));
 	}
-	return cntpct;
-#endif
 
-	// TODO(shinyquagsire23): Proper Kconfig and and device tree reading for this
-	return readq(0x17421000);
+	return cntpct;
 }
 #elif CONFIG_SUNXI_A64_TIMER_ERRATUM
 /*
@@ -85,17 +79,12 @@ unsigned long timer_read_counter(void)
  */
 unsigned long notrace timer_read_counter(void)
 {
-#if 0
 	unsigned long cntpct;
 
 	isb();
 	asm volatile("mrs %0, cntpct_el0" : "=r" (cntpct));
 
 	return cntpct;
-#endif
-
-	// TODO(shinyquagsire23): Proper Kconfig and and device tree reading for this
-	return readq(0x17421000);
 }
 #endif
 

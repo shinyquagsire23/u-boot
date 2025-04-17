@@ -88,6 +88,7 @@ obj-$(CONFIG_DEBUG_LL)	+= debug.o
 
 obj-$(CONFIG_BLOBLIST)  += xferlist.o
 obj-$(CONFIG_GENERATE_ACPI_TABLE) += acpi_table.o
+obj-$(CONFIG_ARM_MMIO_TIMER) += mmio_generic_timer.o
 
 # For EABI conformant tool chains, provide eabi_compat()
 ifneq (,$(findstring -mabi=aapcs-linux,$(PLATFORM_CPPFLAGS)))
