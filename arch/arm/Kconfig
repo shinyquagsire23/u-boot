@@ -433,13 +433,32 @@ config ARCH_CPU_INIT
 
 config SYS_ARCH_TIMER
 	bool "ARM Generic Timer support"
-	depends on CPU_V7A || ARM64
+	depends on (CPU_V7A || ARM64) && !ARM_MMIO_TIMER
 	default y if ARM64
 	help
 	  The ARM Generic Timer (aka arch-timer) provides an architected
 	  interface to a timer source on an SoC.
 	  It is mandatory for ARMv8 implementation and widely available
 	  on ARMv7 systems.
+
+config ARM_MMIO_TIMER
+	bool "ARM Generic Timer MMIO support"
+	depends on CPU_V7A || ARM64
+	help
+	  Some ARM systems only provide the ARM Generic Timer
+	  via MMIO, or prevent access to the system registers
+	  required for arch-timer.
+	  This implementation will attempt to read timer registers
+	  from the device tree nodes compatible with
+	  "arm,armv7-timer-mem".
+
+config ARM_MMIO_TIMER_FALLBACK_ADDR
+	hex "ARM Generic Timer fallback MMIO address"
+	default 0 if ARM_MMIO_TIMER
+	help
+	  If a device tree cannot be found, use this MMIO address
+	  as a fallback during timer_init. Set to 0 if failure to find
+	  device tree nodes should return an error during early init.
 
 config ARM_SMCCC
 	bool "Support for ARM SMC Calling Convention (SMCCC)"

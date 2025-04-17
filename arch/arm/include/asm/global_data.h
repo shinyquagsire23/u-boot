@@ -51,6 +51,9 @@ struct arch_global_data {
 	unsigned int tbl;
 	unsigned long lastinc;
 	unsigned long long timer_reset_value;
+#ifdef CONFIG_ARM_MMIO_TIMER
+	phys_addr_t timer_base;
+#endif
 #if !(CONFIG_IS_ENABLED(SYS_ICACHE_OFF) && CONFIG_IS_ENABLED(SYS_DCACHE_OFF))
 	unsigned long tlb_addr;
 	unsigned long tlb_size;

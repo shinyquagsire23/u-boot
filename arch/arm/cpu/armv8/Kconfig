@@ -193,6 +193,7 @@ config ARMV8_EA_EL3_FIRST
 
 config ARMV8_UDELAY_EVENT_STREAM
 	bool "Use the event stream for udelay"
+	depends on SYS_ARCH_TIMER
 	default y if ARCH_VEXPRESS64
 	help
 	  Use the event stream provided by the AArch64 architectural timer for
