@@ -25,7 +25,6 @@ int timer_init(void)
 {
     ofnode timer;
     ofnode frame;
-    struct resource timer_reg;
 
     /* Use this as the current monotonic time in us */
     gd->arch.timer_reset_value = 0;
