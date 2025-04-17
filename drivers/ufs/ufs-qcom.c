@@ -243,6 +243,14 @@ static int ufs_qcom_power_up_sequence(struct ufs_hba *hba)
 		return ret;
 	}
 
+	/* power off phy, because if we are resetting everything we need the phy on count to reset */
+	ret = generic_phy_power_off(&phy);
+	if (ret) {
+		dev_err(hba->dev, "%s: phy power off failed, ret = %d\n",
+			__func__, ret);
+		goto out_disable_phy;
+	}
+
 	/* power on phy */
 	ret = generic_phy_power_on(&phy);
 	if (ret) {
