@@ -450,6 +450,7 @@ static const struct udevice_id qcom_snps_hsphy_phy_ids[] = {
 	{ .compatible = "qcom,usb-snps-hs-7nm-phy",
 		.data = (ulong)&sc7280_snps_7nm_phy, },
 	{ .compatible = "qcom,usb-snps-femto-v2-phy" },
+	{ .compatible = "qcom,usb-hsphy-snps-femto" },
 	{}
 };
 

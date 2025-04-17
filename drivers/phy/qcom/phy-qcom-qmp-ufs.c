@@ -1176,11 +1176,22 @@ static int qmp_ufs_power_on(struct phy *phy)
 	unsigned int val;
 	int ret;
 
-	/* Power down PHY */
+	ret = qmp_ufs_do_reset(qmp);
+	if (ret) {
+		dev_err(phy->dev, "qmp reset failed\n");
+		return ret;
+	}
+
+	udelay(10);
+
+	/* Hold PHY is reset while writing calib registers */
+	if (!cfg->no_pcs_sw_reset)
+		qphy_setbits(pcs, cfg->regs[QPHY_SW_RESET], SW_RESET);
+
+	/* Power up PHY */
 	qphy_setbits(pcs, cfg->regs[QPHY_PCS_POWER_DOWN_CONTROL], SW_PWRDN);
 
 	qmp_ufs_init_registers(qmp, cfg);
-
 	if (cfg->no_pcs_sw_reset) {
 		ret = qmp_ufs_do_reset(qmp);
 		if (ret) {
@@ -1192,6 +1203,8 @@ static int qmp_ufs_power_on(struct phy *phy)
 	/* Pull PHY out of reset state */
 	if (!cfg->no_pcs_sw_reset)
 		qphy_clrbits(pcs, cfg->regs[QPHY_SW_RESET], SW_RESET);
+
+	udelay(50);
 
 	/* start SerDes */
 	qphy_setbits(pcs, cfg->regs[QPHY_START_CTRL], SERDES_START);
