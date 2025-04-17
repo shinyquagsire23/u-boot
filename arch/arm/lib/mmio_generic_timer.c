@@ -53,7 +53,7 @@ fail:
     // TODO(shinyquagsire23): Kconfig fallback override
     gd->arch.timer_base = CONFIG_ARM_MMIO_TIMER_FALLBACK_ADDR;
     if (!gd->arch.timer_base) {
-        return -ENOENT;    
+        return -ENOENT;
     }
 
     return 0;

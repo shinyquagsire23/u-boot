@@ -575,9 +575,8 @@ static int msm_serial_probe(struct udevice *dev)
 		return ret;
 
 	/* No need to reinitialize the UART after relocation */
-	if (gd->flags & GD_FLG_RELOC) {
+	if (gd->flags & GD_FLG_RELOC)
 		return 0;
-	}
 
 	geni_serial_init(dev);
 	msm_geni_serial_setup_rx(dev);

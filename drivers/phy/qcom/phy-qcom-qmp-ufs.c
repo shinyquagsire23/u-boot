@@ -723,7 +723,7 @@ static const struct qmp_ufs_init_tbl sc7280_ufsphy_hs_g4_rx[] = {
 };
 
 static const struct qmp_ufs_init_tbl sxr2250_ufsphy_serdes[] = {
-	QMP_PHY_INIT_CFG(QSERDES_V5_COM_SYSCLK_EN_SEL, 0xD9), 
+	QMP_PHY_INIT_CFG(QSERDES_V5_COM_SYSCLK_EN_SEL, 0xD9),
 	QMP_PHY_INIT_CFG(QSERDES_V5_COM_HSCLK_SEL, 0x11),
 	QMP_PHY_INIT_CFG(QSERDES_V5_COM_LOCK_CMP_EN, 0x01),
 	QMP_PHY_INIT_CFG(QSERDES_V5_COM_PLL_IVCO, 0x0F),
@@ -797,7 +797,6 @@ static const struct qmp_ufs_init_tbl sxr2250_ufsphy_rx[] = {
 	QMP_PHY_INIT_CFG(0x1F0, 0xE8), // wtf?
 };
 
-// OK
 static const struct qmp_ufs_init_tbl sxr2250_ufsphy_pcs[] = {
 	QMP_PHY_INIT_CFG(QPHY_V5_PCS_UFS_RX_SIGDET_CTRL1, 0x06),
 	QMP_PHY_INIT_CFG(QPHY_V5_PCS_UFS_RX_SIGDET_CTRL2, 0x6D),
@@ -1359,7 +1358,7 @@ static int qmp_ufs_power_on(struct phy *phy)
 
 	udelay(50);
 
-	/* start PCS and SERDES */
+	/* start SerDes */
 	qphy_setbits(pcs, cfg->regs[QPHY_START_CTRL], SERDES_START);
 
 	status = pcs + cfg->regs[QPHY_PCS_READY_STATUS];

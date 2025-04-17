@@ -1935,8 +1935,7 @@ int ufs_start(struct ufs_hba *hba)
 		return ret;
 	}
 
-	// TODO(shinyquagsire23): low-power-only ifdef or quirk
-#if 0
+#ifndef CONFIG_QCOM_UFS_FORCE_LOW_POWER_MODE
 	if (ufshcd_get_max_pwr_mode(hba)) {
 		dev_err(hba->dev,
 			"%s: Failed getting max supported power mode\n",

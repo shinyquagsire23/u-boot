@@ -466,6 +466,28 @@ static int ufs_qcom_set_core_clk_ctrl(struct ufs_hba *hba)
 	return ufs_qcom_set_clk_40ns_cycles(hba, cycles_in_1us);
 }
 
+static int ufs_qcom_set_core_clk_ctrl_lowpower(struct ufs_hba *hba)
+{
+	struct ufs_qcom_priv *priv = dev_get_priv(hba->dev);
+	int err;
+	u32 reg;
+
+	err = ufshcd_dme_get(hba, UIC_ARG_MIB(PA_VS_CONFIG_REG1), &reg);
+	if (err) {
+		dev_err(hba->dev, "cfg get clk failed\n");
+		return err;
+	}
+
+	// no clue what this bitflag is, PBL sets it though.
+	err = ufshcd_dme_set(hba, UIC_ARG_MIB(PA_VS_CONFIG_REG1), reg | 0x1000);
+	if (err) {
+		dev_err(hba->dev, "cfg set clk failed\n");
+		return err;
+	}
+
+	return 0;
+}
+
 static u32 ufs_qcom_get_local_unipro_ver(struct ufs_hba *hba)
 {
 	/* HCI version 1.0 and 1.1 supports UniPro 1.41 */
@@ -485,25 +507,13 @@ static int ufs_qcom_link_startup_notify(struct ufs_hba *hba,
 					enum ufs_notify_change_status status)
 {
 	int err = 0;
-	u32 reg;
 
 	switch (status) {
 	case PRE_CHANGE:
-		// TODO(shinyquagsire23): low-power-only ifdef or quirk
-
-		/*err = ufs_qcom_set_core_clk_ctrl(hba);
+#ifndef CONFIG_QCOM_UFS_FORCE_LOW_POWER_MODE
+		err = ufs_qcom_set_core_clk_ctrl(hba);
 		if (err)
-			dev_err(hba->dev, "cfg core clk ctrl failed\n");*/
-
-		err = ufshcd_dme_get(hba, UIC_ARG_MIB(PA_VS_CONFIG_REG1), &reg);
-		if (err) {
-			dev_err(hba->dev, "cfg get clk failed\n");
-		}
-
-		err = ufshcd_dme_set(hba, UIC_ARG_MIB(PA_VS_CONFIG_REG1), reg | 0x1000);
-		if (err) {
-			dev_err(hba->dev, "cfg set clk failed\n");
-		}
+			dev_err(hba->dev, "cfg core clk ctrl failed\n");
 
 		/*
 		 * Some UFS devices (and may be host) have issues if LCC is
@@ -512,18 +522,21 @@ static int ufs_qcom_link_startup_notify(struct ufs_hba *hba,
 		 * and device TX LCC are disabled once link startup is
 		 * completed.
 		 */
-		/*if (ufs_qcom_get_local_unipro_ver(hba) != UFS_UNIPRO_VER_1_41)
-			err = ufshcd_dme_set(hba, UIC_ARG_MIB(PA_LOCAL_TX_LCC_ENABLE), 0);*/
+		if (ufs_qcom_get_local_unipro_ver(hba) != UFS_UNIPRO_VER_1_41)
+			err = ufshcd_dme_set(hba, UIC_ARG_MIB(PA_LOCAL_TX_LCC_ENABLE), 0);
+#else
+		err = ufs_qcom_set_core_clk_ctrl_lowpower(hba);
+		if (err)
+			dev_err(hba->dev, "cfg core clk ctrl failed\n");
 
 		err = ufshcd_dme_set(hba, UIC_ARG_MIB(PA_AVAILTXDATALANES), 1);
-		if (err) {
+		if (err)
 			dev_err(hba->dev, "cfg num tx lanes failed\n");
-		}
-		err = ufshcd_dme_set(hba, UIC_ARG_MIB(PA_AVAILRXDATALANES), 1);
-		if (err) {
-			dev_err(hba->dev, "cfg num rx lanes failed\n");
-		}
 
+		err = ufshcd_dme_set(hba, UIC_ARG_MIB(PA_AVAILRXDATALANES), 1);
+		if (err)
+			dev_err(hba->dev, "cfg num rx lanes failed\n");
+#endif
 		break;
 	default:
 		break;

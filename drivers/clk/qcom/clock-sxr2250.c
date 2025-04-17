@@ -2,7 +2,11 @@
 /*
  * Clock drivers for Qualcomm sxr2250
  *
- * (C) Copyright 2025 Linaro Ltd.
+ * (C) Copyright 2024 Linaro Ltd.
+ * (C) Copyright 2025 Max Thomas <mtinc2@gmail.com>
+ *
+ * Based on similar U-Boot drivers.
+ * Constants were taken from the Linux drivers and device trees.
  */
 
 #include <clk-uclass.h>
