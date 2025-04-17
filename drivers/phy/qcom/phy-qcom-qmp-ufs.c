@@ -47,6 +47,13 @@
 #define SERDES_START				BIT(0)
 #define PCS_START				BIT(1)
 /* QPHY_PCS_READY_STATUS bit */
+#define PHY_STATUS				BIT(6)
+#define REFGEN_REQ				BIT(6)
+#define RUN_IDAC_CAL_DONE			BIT(5)
+#define PLL_SERIES_UPDATE_DONE			BIT(4)
+#define CMN_PSMCLK_SWITCH_DONE			BIT(3)
+#define POWER_STATE_IDLE			BIT(2)
+#define PLL_ACTIVATE_DONE			BIT(1)
 #define PCS_READY				BIT(0)
 
 #define PHY_INIT_COMPLETE_TIMEOUT		(200 * 10000)
