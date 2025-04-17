@@ -722,458 +722,87 @@ static const struct qmp_ufs_init_tbl sc7280_ufsphy_hs_g4_rx[] = {
 	QMP_PHY_INIT_CFG(QSERDES_V4_RX_GM_CAL, 0x0f),
 };
 
-/*
-ROM:0000000000315A00 ufs_calib_regis DCQ 0x1D87C04
-
-ROM:0000000000315A08                 DCQ 0x1D87094
-ROM:0000000000315A10                 DCQ 0x1D87158
-ROM:0000000000315A18                 DCQ 0x1D870A4
-ROM:0000000000315A20                 DCQ 0x1D87058
-ROM:0000000000315A28                 DCQ 0x1D87124
-ROM:0000000000315A30                 DCQ 0x1D871BC
-ROM:0000000000315A38                 DCQ 0x1D870BC
-ROM:0000000000315A40                 DCQ 0x1D87074
-ROM:0000000000315A48                 DCQ 0x1D8707C
-ROM:0000000000315A50                 DCQ 0x1D87084
-ROM:0000000000315A58                 DCQ 0x1D870AC
-ROM:0000000000315A60                 DCQ 0x1D870B0
-ROM:0000000000315A68                 DCQ 0x1D871AC
-ROM:0000000000315A70                 DCQ 0x1D871B0
-
-ROM:0000000000315A78                 DCQ 0x1D87484
-ROM:0000000000315A80                 DCQ 0x1D874C0
-
-ROM:0000000000315A88                 DCQ 0x1D87720
-ROM:0000000000315A90                 DCQ 0x1D8771C
-ROM:0000000000315A98                 DCQ 0x1D87724
-ROM:0000000000315AA0                 DCQ 0x1D87734
-ROM:0000000000315AA8                 DCQ 0x1D87728
-ROM:0000000000315AB0                 DCQ 0x1D87630
-ROM:0000000000315AB8                 DCQ 0x1D87634
-ROM:0000000000315AC0                 DCQ 0x1D87644
-ROM:0000000000315AC8                 DCQ 0x1D8763C
-ROM:0000000000315AD0                 DCQ 0x1D87648
-ROM:0000000000315AD8                 DCQ 0x1D87680
-ROM:0000000000315AE0                 DCQ 0x1D876EC
-ROM:0000000000315AE8                 DCQ 0x1D876F0
-ROM:0000000000315AF0                 DCQ 0x1D876F4
-ROM:0000000000315AF8                 DCQ 0x1D87624
-ROM:0000000000315B00                 DCQ 0x1D87628
-ROM:0000000000315B08                 DCQ 0x1D87714
-ROM:0000000000315B10                 DCQ 0x1D87700
-ROM:0000000000315B18                 DCQ 0x1D876F8
-ROM:0000000000315B20                 DCQ 0x1D876FC
-ROM:0000000000315B28                 DCQ 0x1D87784
-ROM:0000000000315B30                 DCQ 0x1D87788
-ROM:0000000000315B38                 DCQ 0x1D8778C
-ROM:0000000000315B40                 DCQ 0x1D87790
-ROM:0000000000315B48                 DCQ 0x1D87794
-ROM:0000000000315B50                 DCQ 0x1D8777C
-
-ROM:0000000000315B58                 DCQ 0x1D87D54
-ROM:0000000000315B60                 DCQ 0x1D87D58
-ROM:0000000000315B68                 DCQ 0x1D87C30
-ROM:0000000000315B70                 DCQ 0x1D87C38
-ROM:0000000000315B78                 DCQ 0x1D87C2C
-ROM:0000000000315B80                 DCQ 0x1D87C0C
-ROM:0000000000315B88                 DCQ 0x1D87C10
-ROM:0000000000315B90                 DCQ 0x1D87D60
-ROM:0000000000315B98                 DCQ 0x1D87D68
-ROM:0000000000315BA0                 DCQ 0x1D87C74
-ROM:0000000000315BA8                 DCQ 0x1D87CB4
-
-ROM:0000000000315BB0                 DCQ 0x1D8700C
-ROM:0000000000315BB8                 DCQ 0x1D8717C
-ROM:0000000000315BC0                 DCQ 0x1D87154
-ROM:0000000000315BC8                 DCQ 0x1D8704C
-ROM:0000000000315BD0                 DCQ 0x1D87044
-ROM:0000000000315BD8                 DCQ 0x1D8709C
-ROM:0000000000315BE0                 DCQ 0x1D870A8
-ROM:0000000000315BE8                 DCQ 0x1D87108
-ROM:0000000000315BF0                 DCQ 0x1D87120
-ROM:0000000000315BF8                 DCQ 0x1D87110
-ROM:0000000000315C00                 DCQ 0x1D87114
-ROM:0000000000315C08                 DCQ 0x1D87138
-ROM:0000000000315C10                 DCQ 0x1D8713C
-ROM:0000000000315C18                 DCQ 0x1D870EC
-ROM:0000000000315C20                 DCQ 0x1D870F0
-
-ROM:0000000000315C28                 DCQ 0x1D8745C
-ROM:0000000000315C30                 DCQ 0x1D87578
-ROM:0000000000315C38                 DCQ 0x1D87568
-
-ROM:0000000000315C40                 DCQ 0x1D87618
-ROM:0000000000315C48                 DCQ 0x1D8761C
-ROM:0000000000315C50                 DCQ 0x1D87718
-ROM:0000000000315C58                 DCQ 0x1D877F0
-
-ROM:0000000000315C60                 DCQ 0x1D87C14
-ROM:0000000000315C68                 DCQ 0x1D87C18
-ROM:0000000000315C70                 DCQ 0x1D87C24
-ROM:0000000000315C78                 DCQ 0x1D87D4C
-ROM:0000000000315C80                 DCQ 0x1D87C34
-ROM:0000000000315C88                 DCQ 0x1D87C3C
-ROM:0000000000315C90                 DCQ 0x1D87C40
-ROM:0000000000315C98                 DCQ 0x1D87C48
-ROM:0000000000315CA0                 DCQ 0x1D87C78
-ROM:0000000000315CA8                 DCQ 0x1D87CB8
-ROM:0000000000315CB0                 DCQ 0x1D87CC4
-ROM:0000000000315CB8                 DCQ 0x1D87CC8
-ROM:0000000000315CC0                 DCQ 0x1D87CCC
-ROM:0000000000315CC8                 DCQ 0x1D87CD4
-ROM:0000000000315CD0                 DCQ 0x1D87CDC
-ROM:0000000000315CD8                 DCQ 0x1D87CE0
-ROM:0000000000315CE0                 DCQ 0x1D87CE4
-ROM:0000000000315CE8                 DCQ 0x1D87D48
-ROM:0000000000315CF0                 DCQ 0x1D87D50
-ROM:0000000000315CF8                 DCQ 0x1D87D64
-ROM:0000000000315D00                 DCQ 0x1D87DB4
-ROM:0000000000315D08                 DCQ 0x1D87DB8
-ROM:0000000000315D10                 DCQ 0x1D87DC0
-ROM:0000000000315D18                 DCQ 0x1D87DC4
-
-ROM:0000000000315D20                 DCQ 0xFFFFFFFF
-ROM:0000000000315D28                 DCQ 0xFFFFFFFF
-ROM:0000000000315D30                 DCQ 0xFFFFFFFF
-ROM:0000000000315D38                 DCQ 0xFFFFFFFF
-ROM:0000000000315D40                 DCQ 0xFFFFFFFF
-ROM:0000000000315D48                 DCQ 0xFFFFFFFF
-ROM:0000000000315D50                 DCQ 0xFFFFFFFF
-ROM:0000000000315D58                 DCQ 0xFFFFFFFF
-ROM:0000000000315D60                 DCQ 0xFFFFFFFF
-ROM:0000000000315D68                 DCQ 0xFFFFFFFF
-ROM:0000000000315D70                 DCQ 0xFFFFFFFF
-ROM:0000000000315D78                 DCQ 0xFFFFFFFF
-ROM:0000000000315D80                 DCQ 0xFFFFFFFF
-ROM:0000000000315D88                 DCQ 0xFFFFFFFF
-ROM:0000000000315D90                 DCQ 0xFFFFFFFF
-ROM:0000000000315D98                 DCQ 0xFFFFFFFF
-ROM:0000000000315DA0                 DCQ 0xFFFFFFFF
-ROM:0000000000315DA8                 DCQ 0xFFFFFFFF
-ROM:0000000000315DB0                 DCQ 0xFFFFFFFF
-ROM:0000000000315DB8                 DCQ 0xFFFFFFFF
-*/
-/*
-*(volatile unsigned int*)0x1D87C04 = 0x1;
-*(volatile unsigned int*)0x1D87094 = 0xd9;
-*(volatile unsigned int*)0x1D87158 = 0x11;
-*(volatile unsigned int*)0x1D870A4 =    1;
-*(volatile unsigned int*)0x1D87058 =  0xF;
-*(volatile unsigned int*)0x1D87124 =    0;
-*(volatile unsigned int*)0x1D871BC = 0x11;
-*(volatile unsigned int*)0x1D870BC = 0x98;
-*(volatile unsigned int*)0x1D87074 =    6;
-*(volatile unsigned int*)0x1D8707C = 0x16;
-*(volatile unsigned int*)0x1D87084 = 0x36;
-*(volatile unsigned int*)0x1D870AC = 0x32;
-*(volatile unsigned int*)0x1D870B0 =  0xF;
-*(volatile unsigned int*)0x1D871AC = 0xAC;
-*(volatile unsigned int*)0x1D871B0 = 0x1E;
-*(volatile unsigned int*)0x1D87484 =    5;
-*(volatile unsigned int*)0x1D874C0 =  0xC;
-*(volatile unsigned int*)0x1D87720 = 0x24;
-*(volatile unsigned int*)0x1D8771C =  0xF;
-*(volatile unsigned int*)0x1D87724 = 0x1E;
-*(volatile unsigned int*)0x1D87734 = 0x44;
-*(volatile unsigned int*)0x1D87728 = 0x18;
-*(volatile unsigned int*)0x1D87630 =  0xA;
-*(volatile unsigned int*)0x1D87634 = 0x4B;
-*(volatile unsigned int*)0x1D87644 = 0xB1;
-*(volatile unsigned int*)0x1D8763C = 0x80;
-*(volatile unsigned int*)0x1D87648 = 0x80;
-*(volatile unsigned int*)0x1D87680 = 0x5B;
-*(volatile unsigned int*)0x1D876EC =    6;
-*(volatile unsigned int*)0x1D876F0 = 0x4E;
-*(volatile unsigned int*)0x1D876F4 = 0x1D;
-*(volatile unsigned int*)0x1D87624 =    4;
-*(volatile unsigned int*)0x1D87628 =    4;
-*(volatile unsigned int*)0x1D87714 =    0;
-*(volatile unsigned int*)0x1D87700 = 0x10;
-*(volatile unsigned int*)0x1D876F8 = 0xC0;
-*(volatile unsigned int*)0x1D876FC =    0;
-*(volatile unsigned int*)0x1D87784 = 0xE0;
-*(volatile unsigned int*)0x1D87788 = 0xC8;
-*(volatile unsigned int*)0x1D8778C = 0xC8;
-*(volatile unsigned int*)0x1D87790 = 0x3B;
-*(volatile unsigned int*)0x1D87794 = 0xB1;
-*(volatile unsigned int*)0x1D8777C = 0x3B;
-*(volatile unsigned int*)0x1D87D54 =    6;
-*(volatile unsigned int*)0x1D87D58 = 0x6D;
-*(volatile unsigned int*)0x1D87C30 =  0xA;
-*(volatile unsigned int*)0x1D87C38 =    2;
-*(volatile unsigned int*)0x1D87C2C =    3;
-*(volatile unsigned int*)0x1D87C0C = 0x16;
-*(volatile unsigned int*)0x1D87C10 = 0xD8;
-*(volatile unsigned int*)0x1D87D60 = 0xAA;
-*(volatile unsigned int*)0x1D87D68 =    6;
-*(volatile unsigned int*)0x1D87C74 =    3;
-*(volatile unsigned int*)0x1D87CB4 =    3;
-*(volatile unsigned int*)0x1D8700C =  0xA;
-*(volatile unsigned int*)0x1D8717C =    6;
-*(volatile unsigned int*)0x1D87154 = 0x31;
-*(volatile unsigned int*)0x1D8704C =    2;
-*(volatile unsigned int*)0x1D87044 = 0x14;
-*(volatile unsigned int*)0x1D8709C = 0x28;
-*(volatile unsigned int*)0x1D870A8 =    0;
-*(volatile unsigned int*)0x1D87108 =    0;
-*(volatile unsigned int*)0x1D87120 = 0xFF;
-*(volatile unsigned int*)0x1D87110 = 0x53;
-*(volatile unsigned int*)0x1D87114 =    2;
-*(volatile unsigned int*)0x1D87138 = 0xFF;
-*(volatile unsigned int*)0x1D8713C = 0x3F;
-*(volatile unsigned int*)0x1D870EC = 0x3F;
-*(volatile unsigned int*)0x1D870F0 =    0;
-*(volatile unsigned int*)0x1D8745C =    0;
-*(volatile unsigned int*)0x1D87578 = 0x16;
-*(volatile unsigned int*)0x1D87568 =    6;
-*(volatile unsigned int*)0x1D87618 =  0xA;
-*(volatile unsigned int*)0x1D8761C =  0xA;
-*(volatile unsigned int*)0x1D87718 =    0;
-*(volatile unsigned int*)0x1D877F0 = 0xE8;
-*(volatile unsigned int*)0x1D87C14 = 0x1F;
-*(volatile unsigned int*)0x1D87C18 =    0;
-*(volatile unsigned int*)0x1D87C24 = 0x2A;
-*(volatile unsigned int*)0x1D87D4C =    3;
-*(volatile unsigned int*)0x1D87C34 =    0;
-*(volatile unsigned int*)0x1D87C3C =    0;
-*(volatile unsigned int*)0x1D87C40 = 0x64;
-*(volatile unsigned int*)0x1D87C48 = 0x30;
-*(volatile unsigned int*)0x1D87C78 =    4;
-*(volatile unsigned int*)0x1D87CB8 =    4;
-*(volatile unsigned int*)0x1D87CC4 =    8;
-*(volatile unsigned int*)0x1D87CC8 =  0xF;
-*(volatile unsigned int*)0x1D87CCC = 0xFA;
-*(volatile unsigned int*)0x1D87CD4 = 0x48;
-*(volatile unsigned int*)0x1D87CDC =  0xA;
-*(volatile unsigned int*)0x1D87CE0 = 0x1C;
-*(volatile unsigned int*)0x1D87CE4 =    1;
-*(volatile unsigned int*)0x1D87D48 =    0;
-*(volatile unsigned int*)0x1D87D50 = 0x1C;
-*(volatile unsigned int*)0x1D87D64 = 0x15;
-*(volatile unsigned int*)0x1D87DB4 =    0;
-*(volatile unsigned int*)0x1D87DB8 = 0x69;
-*(volatile unsigned int*)0x1D87DC0 = 0x1E;
-*(volatile unsigned int*)0x1D87DC4 =  0xF;
-ROM:0000000000315D20                 DCQ 0xFFFFFFFF
-ROM:0000000000315D28                 DCQ 0xFFFFFFFF
-ROM:0000000000315D30                 DCQ 0xFFFFFFFF
-ROM:0000000000315D38                 DCQ 0xFFFFFFFF
-ROM:0000000000315D40                 DCQ 0xFFFFFFFF
-ROM:0000000000315D48                 DCQ 0xFFFFFFFF
-ROM:0000000000315D50                 DCQ 0xFFFFFFFF
-ROM:0000000000315D58                 DCQ 0xFFFFFFFF
-ROM:0000000000315D60                 DCQ 0xFFFFFFFF
-ROM:0000000000315D68                 DCQ 0xFFFFFFFF
-ROM:0000000000315D70                 DCQ 0xFFFFFFFF
-ROM:0000000000315D78                 DCQ 0xFFFFFFFF
-ROM:0000000000315D80                 DCQ 0xFFFFFFFF
-ROM:0000000000315D88                 DCQ 0xFFFFFFFF
-ROM:0000000000315D90                 DCQ 0xFFFFFFFF
-ROM:0000000000315D98                 DCQ 0xFFFFFFFF
-ROM:0000000000315DA0                 DCQ 0xFFFFFFFF
-ROM:0000000000315DA8                 DCQ 0xFFFFFFFF
-ROM:0000000000315DB0                 DCQ 0xFFFFFFFF
-ROM:0000000000315DB8                 DCQ 0xFFFFFFFF
-*/
-
-/*
-0x1
-0xd9
-0x11
-   1
- 0xF
-   0
-0x11
-0x98
-   6
-0x16
-0x36
-0x32
- 0xF
-0xAC
-0x1E
-   5
- 0xC
-0x24
- 0xF
-0x1E
-0x44
-0x18
- 0xA
-0x4B
-0xB1
-0x80
-0x80
-0x5B
-   6
-0x4E
-0x1D
-   4
-   4
-   0
-0x10
-0xC0
-   0
-0xE0
-0xC8
-0xC8
-0x3B
-0xB1
-0x3B
-   6
-0x6D
- 0xA
-   2
-   3
-0x16
-0xD8
-0xAA
-   6
-   3
-   3
- 0xA
-   6
-0x31
-   2
-0x14
-0x28
-   0
-   0
-0xFF
-0x53
-   2
-0xFF
-0x3F
-0x3F
-   0
-   0
-0x16
-   6
- 0xA
- 0xA
-   0
-0xE8
-0x1F
-   0
-0x2A
-   3
-   0
-   0
-0x64
-0x30
-   4
-   4
-   8
- 0xF
-0xFA
-0x48
- 0xA
-0x1C
-   1
-   0
-0x1C
-0x15
-   0
-0x69
-0x1E
- 0xF
-*/
-
-// OK
 static const struct qmp_ufs_init_tbl sxr2250_ufsphy_serdes[] = {
-	//UFS_QCOM_PHY_CAL_ENTRY(UFS_PHY_POWER_DOWN_CONTROL, 0x01),
-	QMP_PHY_INIT_CFG(QSERDES_V4_COM_SYSCLK_EN_SEL, 0xD9), //
-	QMP_PHY_INIT_CFG(QSERDES_V4_COM_HSCLK_SEL, 0x11), //
-	QMP_PHY_INIT_CFG(QSERDES_V4_COM_HSCLK_HS_SWITCH_SEL, 0x00),
-	QMP_PHY_INIT_CFG(QSERDES_V4_COM_LOCK_CMP_EN, 0x42),
-	QMP_PHY_INIT_CFG(QSERDES_V4_COM_VCO_TUNE_MAP, 0x02),
+	QMP_PHY_INIT_CFG(QSERDES_V4_COM_SYSCLK_EN_SEL, 0xD9), 
+	QMP_PHY_INIT_CFG(QSERDES_V4_COM_HSCLK_SEL, 0x11),
+	QMP_PHY_INIT_CFG(QSERDES_V4_COM_LOCK_CMP_EN, 0x01),
 	QMP_PHY_INIT_CFG(QSERDES_V4_COM_PLL_IVCO, 0x0F),
 	QMP_PHY_INIT_CFG(QSERDES_V4_COM_VCO_TUNE_INITVAL2, 0x00),
 	QMP_PHY_INIT_CFG(QSERDES_V4_COM_BIN_VCOCAL_HSCLK_SEL, 0x11),
-	QMP_PHY_INIT_CFG(QSERDES_V4_COM_DEC_START_MODE0, 0x82),
-	QMP_PHY_INIT_CFG(QSERDES_V4_COM_CP_CTRL_MODE0, 0x14),
-	QMP_PHY_INIT_CFG(QSERDES_V4_COM_PLL_RCTRL_MODE0, 0x18),
-	QMP_PHY_INIT_CFG(QSERDES_V4_COM_PLL_CCTRL_MODE0, 0x18),
-	QMP_PHY_INIT_CFG(QSERDES_V4_COM_LOCK_CMP1_MODE0, 0xFF),
-	QMP_PHY_INIT_CFG(QSERDES_V4_COM_LOCK_CMP2_MODE0, 0x19),
+	QMP_PHY_INIT_CFG(QSERDES_V4_COM_DEC_START_MODE0, 0x98),
+	QMP_PHY_INIT_CFG(QSERDES_V4_COM_CP_CTRL_MODE0, 0x06),
+	QMP_PHY_INIT_CFG(QSERDES_V4_COM_PLL_RCTRL_MODE0, 0x16),
+	QMP_PHY_INIT_CFG(QSERDES_V4_COM_PLL_CCTRL_MODE0, 0x36),
+	QMP_PHY_INIT_CFG(QSERDES_V4_COM_LOCK_CMP1_MODE0, 0x32),
+	QMP_PHY_INIT_CFG(QSERDES_V4_COM_LOCK_CMP2_MODE0, 0x0F),
 	QMP_PHY_INIT_CFG(QSERDES_V4_COM_BIN_VCOCAL_CMP_CODE1_MODE0, 0xAC),
 	QMP_PHY_INIT_CFG(QSERDES_V4_COM_BIN_VCOCAL_CMP_CODE2_MODE0, 0x1E),
-	QMP_PHY_INIT_CFG(QSERDES_V4_COM_DEC_START_MODE1, 0x98),
-	QMP_PHY_INIT_CFG(QSERDES_V4_COM_CP_CTRL_MODE1, 0x14),
-	QMP_PHY_INIT_CFG(QSERDES_V4_COM_PLL_RCTRL_MODE1, 0x18),
-	QMP_PHY_INIT_CFG(QSERDES_V4_COM_PLL_CCTRL_MODE1, 0x18),
-	QMP_PHY_INIT_CFG(QSERDES_V4_COM_LOCK_CMP1_MODE1, 0x65),
-	QMP_PHY_INIT_CFG(QSERDES_V4_COM_LOCK_CMP2_MODE1, 0x1E),
-	QMP_PHY_INIT_CFG(QSERDES_V4_COM_BIN_VCOCAL_CMP_CODE1_MODE1, 0xDD),
-	QMP_PHY_INIT_CFG(QSERDES_V4_COM_BIN_VCOCAL_CMP_CODE2_MODE1, 0x23),
+
+	QMP_PHY_INIT_CFG(QSERDES_V4_COM_BG_TIMER, 0x0A),
+	QMP_PHY_INIT_CFG(QSERDES_V4_COM_CMN_CONFIG, 0x06),
+	QMP_PHY_INIT_CFG(QSERDES_V4_COM_CLK_SELECT, 0x31),
+	QMP_PHY_INIT_CFG(QSERDES_V4_COM_SYS_CLK_CTRL, 0x02),
+	QMP_PHY_INIT_CFG(QSERDES_V4_COM_BIAS_EN_CLKBUFLR_EN, 0x14),
+	QMP_PHY_INIT_CFG(QSERDES_V4_COM_RESETSM_CNTRL, 0x28),
+	QMP_PHY_INIT_CFG(QSERDES_V4_COM_LOCK_CMP_CFG, 0x00),
+	QMP_PHY_INIT_CFG(QSERDES_V4_COM_VCO_TUNE_CTRL, 0x00),
+	QMP_PHY_INIT_CFG(QSERDES_V4_COM_VCO_TUNE_INITVAL1, 0xFF),
+	QMP_PHY_INIT_CFG(QSERDES_V4_COM_VCO_TUNE1_MODE0, 0x53),
+	QMP_PHY_INIT_CFG(QSERDES_V4_COM_VCO_TUNE2_MODE0, 0x02),
+	QMP_PHY_INIT_CFG(QSERDES_V4_COM_VCO_TUNE_TIMER1, 0xFF),
+	QMP_PHY_INIT_CFG(QSERDES_V4_COM_VCO_TUNE_TIMER2, 0x3F),
+	QMP_PHY_INIT_CFG(QSERDES_V4_COM_INTEGLOOP_GAIN0_MODE0, 0x3F),
+	QMP_PHY_INIT_CFG(QSERDES_V4_COM_INTEGLOOP_GAIN1_MODE0, 0x00),
 };
 
-// OK
-static const struct qmp_ufs_init_tbl sxr2250_ufsphy_hs_b_serdes[] = {
-	QMP_PHY_INIT_CFG(QSERDES_V5_COM_VCO_TUNE_MAP, 0x06),
-};
-
-// OK
 static const struct qmp_ufs_init_tbl sxr2250_ufsphy_tx[] = {
-	QMP_PHY_INIT_CFG(QSERDES_V4_TX_PWM_GEAR_1_DIVIDER_BAND0_1, 0x06),
-	QMP_PHY_INIT_CFG(QSERDES_V4_TX_PWM_GEAR_2_DIVIDER_BAND0_1, 0x03),
-	QMP_PHY_INIT_CFG(QSERDES_V4_TX_PWM_GEAR_3_DIVIDER_BAND0_1, 0x01),
-	QMP_PHY_INIT_CFG(QSERDES_V4_TX_PWM_GEAR_4_DIVIDER_BAND0_1, 0x00),
-	QMP_PHY_INIT_CFG(QSERDES_V4_TX_LANE_MODE_1, 0xF5),
-	QMP_PHY_INIT_CFG(QSERDES_V4_TX_LANE_MODE_3, 0x3F),
-	QMP_PHY_INIT_CFG(QSERDES_V4_TX_RES_CODE_LANE_OFFSET_TX, 0x03),
-	QMP_PHY_INIT_CFG(QSERDES_V4_TX_RES_CODE_LANE_OFFSET_RX, 0x06),
-	QMP_PHY_INIT_CFG(QSERDES_V4_TX_TRAN_DRVR_EMP_EN, 0x0C),
+	QMP_PHY_INIT_CFG(QSERDES_V4_TX_LANE_MODE_1, 0x05),
+	QMP_PHY_INIT_CFG(QSERDES_V4_TX_PWM_CTRL, 0x0C),
+	QMP_PHY_INIT_CFG(QSERDES_V4_TX_TX_POL_INV, 0x00),
+	QMP_PHY_INIT_CFG(0x178, 0x16), // wtf?
+	QMP_PHY_INIT_CFG(0x168, 0x06), // wtf?
 };
 
 static const struct qmp_ufs_init_tbl sxr2250_ufsphy_rx[] = {
 	QMP_PHY_INIT_CFG(QSERDES_V4_RX_SIGDET_LVL, 0x24),
 	QMP_PHY_INIT_CFG(QSERDES_V4_RX_SIGDET_CNTRL, 0x0F),
 	QMP_PHY_INIT_CFG(QSERDES_V4_RX_SIGDET_DEGLITCH_CNTRL, 0x1E),
-	QMP_PHY_INIT_CFG(QSERDES_V3_RX_RX_INTERFACE_MODE, 0x00),
+	QMP_PHY_INIT_CFG(QSERDES_V4_RX_RX_INTERFACE_MODE, 0x44),
 	QMP_PHY_INIT_CFG(QSERDES_V4_RX_RX_BAND, 0x18),
-	QMP_PHY_INIT_CFG(QSERDES_V4_RX_UCDR_FASTLOCK_FO_GAIN, 0x0A),
-	QMP_PHY_INIT_CFG(QSERDES_V4_RX_UCDR_SO_SATURATION_AND_ENABLE, 0x5A),
-	QMP_PHY_INIT_CFG(QSERDES_V4_RX_UCDR_PI_CONTROLS, 0xF1),
-	QMP_PHY_INIT_CFG(QSERDES_V4_RX_UCDR_FASTLOCK_COUNT_LOW, 0x80),
-	QMP_PHY_INIT_CFG(QSERDES_V4_RX_UCDR_PI_CTRL2, 0x80),
-	QMP_PHY_INIT_CFG(QSERDES_V4_RX_UCDR_FO_GAIN, 0x0E),
-	QMP_PHY_INIT_CFG(QSERDES_V4_RX_UCDR_SO_GAIN, 0x04),
-	QMP_PHY_INIT_CFG(QSERDES_V4_RX_RX_TERM_BW, 0x1B),
-	QMP_PHY_INIT_CFG(QSERDES_V4_RX_RX_EQU_ADAPTOR_CNTRL1, 0x04),
-	QMP_PHY_INIT_CFG(QSERDES_V4_RX_RX_EQU_ADAPTOR_CNTRL2, 0x06),
-	QMP_PHY_INIT_CFG(QSERDES_V4_RX_RX_EQU_ADAPTOR_CNTRL3, 0x04),
-	QMP_PHY_INIT_CFG(QSERDES_V4_RX_RX_EQU_ADAPTOR_CNTRL4, 0x1A),
-	QMP_PHY_INIT_CFG(QSERDES_V4_RX_RX_EQ_OFFSET_ADAPTOR_CNTRL1, 0x17),
-	QMP_PHY_INIT_CFG(QSERDES_V4_RX_RX_OFFSET_ADAPTOR_CNTRL2, 0x00),
-	QMP_PHY_INIT_CFG(QSERDES_V4_RX_RX_IDAC_MEASURE_TIME, 0x10),
-	QMP_PHY_INIT_CFG(QSERDES_V4_RX_RX_IDAC_TSETTLE_LOW, 0xC0),
-	QMP_PHY_INIT_CFG(QSERDES_V4_RX_RX_IDAC_TSETTLE_HIGH, 0x00),
-	QMP_PHY_INIT_CFG(QSERDES_V4_RX_RX_MODE_00_LOW, 0x6D),
-	QMP_PHY_INIT_CFG(QSERDES_V4_RX_RX_MODE_00_HIGH, 0x6D),
-	QMP_PHY_INIT_CFG(QSERDES_V4_RX_RX_MODE_00_HIGH2, 0xED),
-	QMP_PHY_INIT_CFG(QSERDES_V4_RX_RX_MODE_00_HIGH3, 0x3B),
-	QMP_PHY_INIT_CFG(QSERDES_V4_RX_RX_MODE_00_HIGH4, 0x3C),
-	QMP_PHY_INIT_CFG(QSERDES_V4_RX_RX_MODE_01_LOW, 0xE0),
-	QMP_PHY_INIT_CFG(QSERDES_V4_RX_RX_MODE_01_HIGH, 0xC8),
-	QMP_PHY_INIT_CFG(QSERDES_V4_RX_RX_MODE_01_HIGH2, 0xC8),
-	QMP_PHY_INIT_CFG(QSERDES_V4_RX_RX_MODE_01_HIGH3, 0x3B),
-	QMP_PHY_INIT_CFG(QSERDES_V4_RX_RX_MODE_01_HIGH4, 0xB7),
-	QMP_PHY_INIT_CFG(QSERDES_V4_RX_RX_MODE_10_LOW, 0xE0),
-	QMP_PHY_INIT_CFG(QSERDES_V4_RX_RX_MODE_10_HIGH, 0xC8),
-	QMP_PHY_INIT_CFG(QSERDES_V4_RX_RX_MODE_10_HIGH2, 0xC8),
-	QMP_PHY_INIT_CFG(QSERDES_V4_RX_RX_MODE_10_HIGH3, 0x3B),
-	QMP_PHY_INIT_CFG(QSERDES_V4_RX_RX_MODE_10_HIGH4, 0xB7),
-	QMP_PHY_INIT_CFG(QSERDES_V4_RX_DCC_CTRL1, 0x0C),
+	QMP_PHY_INIT_CFG(QSERDES_V4_COM_SSC_STEP_SIZE1_MODE1,  0xA),
+	QMP_PHY_INIT_CFG(QSERDES_V4_COM_SSC_STEP_SIZE2_MODE1, 0x4B),
+	QMP_PHY_INIT_CFG(QSERDES_V4_COM_BIAS_EN_CLKBUFLR_EN, 0xB1),
+	QMP_PHY_INIT_CFG(QSERDES_V4_COM_POST_DIV, 0x80),
+	QMP_PHY_INIT_CFG(QSERDES_V4_COM_CLK_ENABLE1, 0x80),
+	QMP_PHY_INIT_CFG(QSERDES_V4_COM_PLL_RCTRL_MODE1, 0x5B),
+	QMP_PHY_INIT_CFG(QSERDES_V4_COM_INTEGLOOP_GAIN0_MODE0, 0x06),
+	QMP_PHY_INIT_CFG(QSERDES_V4_COM_INTEGLOOP_GAIN1_MODE0, 0x4E),
+	QMP_PHY_INIT_CFG(QSERDES_V4_COM_INTEGLOOP_GAIN0_MODE1, 0x1D),
+	QMP_PHY_INIT_CFG(QSERDES_V4_COM_SSC_STEP_SIZE1_MODE0, 0x04),
+	QMP_PHY_INIT_CFG(QSERDES_V4_COM_SSC_STEP_SIZE2_MODE0, 0x04),
+	QMP_PHY_INIT_CFG(QSERDES_V4_COM_VCO_TUNE2_MODE0, 0x00),
+	QMP_PHY_INIT_CFG(QSERDES_V4_COM_INTEGLOOP_P_PATH_GAIN1, 0x10),
+	QMP_PHY_INIT_CFG(QSERDES_V4_COM_INTEGLOOP_GAIN1_MODE1, 0xC0),
+	QMP_PHY_INIT_CFG(QSERDES_V4_COM_INTEGLOOP_P_PATH_GAIN0, 0x00),
+	QMP_PHY_INIT_CFG(QSERDES_V4_COM_SVS_MODE_CLK_SEL, 0xE0),
+	QMP_PHY_INIT_CFG(QSERDES_V4_COM_DEBUG_BUS0, 0xC8),
+	QMP_PHY_INIT_CFG(QSERDES_V4_COM_DEBUG_BUS1, 0xC8),
+	QMP_PHY_INIT_CFG(QSERDES_V4_COM_DEBUG_BUS2, 0x3B),
+	QMP_PHY_INIT_CFG(QSERDES_V4_COM_DEBUG_BUS3, 0xB1),
+	QMP_PHY_INIT_CFG(QSERDES_V4_COM_CMN_CONFIG, 0x3B),
+
+	QMP_PHY_INIT_CFG(QSERDES_V4_COM_SSC_ADJ_PER2, 0x0A),
+	QMP_PHY_INIT_CFG(QSERDES_V4_COM_SSC_PER1, 0x0A),
+	QMP_PHY_INIT_CFG(QSERDES_V4_COM_VCO_TUNE1_MODE1, 0x00),
+	QMP_PHY_INIT_CFG(0x1F0, 0xE8), // wtf?
 };
 
+// OK
 static const struct qmp_ufs_init_tbl sxr2250_ufsphy_pcs[] = {
+	QMP_PHY_INIT_CFG(QPHY_V4_PCS_UFS_RX_SIGDET_CTRL1, 0x06),
 	QMP_PHY_INIT_CFG(QPHY_V4_PCS_UFS_RX_SIGDET_CTRL2, 0x6D),
 	QMP_PHY_INIT_CFG(QPHY_V4_PCS_UFS_TX_LARGE_AMP_DRV_LVL, 0x0A),
 	QMP_PHY_INIT_CFG(QPHY_V4_PCS_UFS_TX_SMALL_AMP_DRV_LVL, 0x02),
-	QMP_PHY_INIT_CFG(QPHY_V4_PCS_UFS_TX_MID_TERM_CTRL1, 0x43),
-	QMP_PHY_INIT_CFG(QPHY_V4_PCS_UFS_DEBUG_BUS_CLKSEL, 0x1F),
-	QMP_PHY_INIT_CFG(QPHY_V4_PCS_UFS_RX_MIN_HIBERN8_TIME, 0xFF),
 	QMP_PHY_INIT_CFG(QPHY_V4_PCS_UFS_PLL_CNTL, 0x03),
 	QMP_PHY_INIT_CFG(QPHY_V4_PCS_UFS_TIMER_20US_CORECLK_STEPS_MSB, 0x16),
 	QMP_PHY_INIT_CFG(QPHY_V4_PCS_UFS_TIMER_20US_CORECLK_STEPS_LSB, 0xD8),
@@ -1181,65 +810,32 @@ static const struct qmp_ufs_init_tbl sxr2250_ufsphy_pcs[] = {
 	QMP_PHY_INIT_CFG(QPHY_V4_PCS_UFS_TX_HS_GEAR_BAND, 0x06),
 	QMP_PHY_INIT_CFG(QPHY_V4_PCS_UFS_TX_HSGEAR_CAPABILITY, 0x03),
 	QMP_PHY_INIT_CFG(QPHY_V4_PCS_UFS_RX_HSGEAR_CAPABILITY, 0x03),
-	QMP_PHY_INIT_CFG(QPHY_V4_PCS_UFS_RX_SIGDET_CTRL1, 0x0E),
-};
 
-
-static const struct qmp_ufs_init_tbl sxr2250_ufsphy_hs_g4_tx[] = {
-	QMP_PHY_INIT_CFG(QSERDES_V4_TX_LANE_MODE_1, 0xe5),
-};
-
-static const struct qmp_ufs_init_tbl sxr2250_ufsphy_hs_g4_rx[] = {
-	QMP_PHY_INIT_CFG(QSERDES_V4_RX_SIGDET_LVL, 0x24),
-	QMP_PHY_INIT_CFG(QSERDES_V4_RX_SIGDET_CNTRL, 0x0F),
-	QMP_PHY_INIT_CFG(QSERDES_V4_RX_SIGDET_DEGLITCH_CNTRL, 0x1E),
-	QMP_PHY_INIT_CFG(QSERDES_V3_RX_RX_INTERFACE_MODE, 0x00),
-	QMP_PHY_INIT_CFG(QSERDES_V4_RX_RX_BAND, 0x18),
-	QMP_PHY_INIT_CFG(QSERDES_V4_RX_UCDR_FASTLOCK_FO_GAIN, 0x0A),
-	QMP_PHY_INIT_CFG(QSERDES_V4_RX_UCDR_SO_SATURATION_AND_ENABLE, 0x5A),
-	QMP_PHY_INIT_CFG(QSERDES_V4_RX_UCDR_PI_CONTROLS, 0xF1),
-	QMP_PHY_INIT_CFG(QSERDES_V4_RX_UCDR_FASTLOCK_COUNT_LOW, 0x80),
-	QMP_PHY_INIT_CFG(QSERDES_V4_RX_UCDR_PI_CTRL2, 0x81),
-	QMP_PHY_INIT_CFG(QSERDES_V4_RX_UCDR_FO_GAIN, 0x0E),
-	QMP_PHY_INIT_CFG(QSERDES_V4_RX_UCDR_SO_GAIN, 0x04),
-	QMP_PHY_INIT_CFG(QSERDES_V4_RX_RX_TERM_BW, 0x6F),
-	QMP_PHY_INIT_CFG(QSERDES_V4_RX_RX_EQU_ADAPTOR_CNTRL1, 0x04),
-	QMP_PHY_INIT_CFG(QSERDES_V4_RX_RX_EQU_ADAPTOR_CNTRL2, 0x00),
-	QMP_PHY_INIT_CFG(QSERDES_V4_RX_RX_EQU_ADAPTOR_CNTRL3, 0x4A),
-	QMP_PHY_INIT_CFG(QSERDES_V4_RX_RX_EQU_ADAPTOR_CNTRL4, 0x0A),
-	QMP_PHY_INIT_CFG(QSERDES_V4_RX_RX_EQ_OFFSET_ADAPTOR_CNTRL1, 0x17),
-	QMP_PHY_INIT_CFG(QSERDES_V4_RX_RX_OFFSET_ADAPTOR_CNTRL2, 0x00),
-	QMP_PHY_INIT_CFG(QSERDES_V4_RX_RX_IDAC_MEASURE_TIME, 0x20),
-	QMP_PHY_INIT_CFG(QSERDES_V4_RX_RX_IDAC_TSETTLE_LOW, 0x80),
-	QMP_PHY_INIT_CFG(QSERDES_V4_RX_RX_IDAC_TSETTLE_HIGH, 0x01),
-	QMP_PHY_INIT_CFG(QSERDES_V4_RX_RX_MODE_00_LOW, 0xBF),
-	QMP_PHY_INIT_CFG(QSERDES_V4_RX_RX_MODE_00_HIGH, 0xBF),
-	QMP_PHY_INIT_CFG(QSERDES_V4_RX_RX_MODE_00_HIGH2, 0x7F),
-	QMP_PHY_INIT_CFG(QSERDES_V4_RX_RX_MODE_00_HIGH3, 0x7F),
-	QMP_PHY_INIT_CFG(QSERDES_V4_RX_RX_MODE_00_HIGH4, 0x2D),
-	QMP_PHY_INIT_CFG(QSERDES_V4_RX_RX_MODE_01_LOW, 0x6D),
-	QMP_PHY_INIT_CFG(QSERDES_V4_RX_RX_MODE_01_HIGH, 0x6D),
-	QMP_PHY_INIT_CFG(QSERDES_V4_RX_RX_MODE_01_HIGH2, 0xED),
-	QMP_PHY_INIT_CFG(QSERDES_V4_RX_RX_MODE_01_HIGH3, 0x3B),
-	QMP_PHY_INIT_CFG(QSERDES_V4_RX_RX_MODE_01_HIGH4, 0x3C),
-	QMP_PHY_INIT_CFG(QSERDES_V4_RX_RX_MODE_10_LOW, 0xE0),
-	QMP_PHY_INIT_CFG(QSERDES_V4_RX_RX_MODE_10_HIGH, 0xC8),
-	QMP_PHY_INIT_CFG(QSERDES_V4_RX_RX_MODE_10_HIGH2, 0xC8),
-	QMP_PHY_INIT_CFG(QSERDES_V4_RX_RX_MODE_10_HIGH3, 0x3B),
-	QMP_PHY_INIT_CFG(QSERDES_V4_RX_RX_MODE_10_HIGH4, 0xB7),
-	QMP_PHY_INIT_CFG(QSERDES_V4_RX_DCC_CTRL1, 0x0C),
-	QMP_PHY_INIT_CFG(QSERDES_V4_RX_GM_CAL, 0x0F),
-};
-
-static const struct qmp_ufs_init_tbl sxr2250_ufsphy_hs_g4_pcs[] = {
-	QMP_PHY_INIT_CFG(QPHY_V4_PCS_UFS_RX_SIGDET_CTRL2, 0x6D),
-	QMP_PHY_INIT_CFG(QPHY_V4_PCS_UFS_TX_LARGE_AMP_DRV_LVL, 0x0A),
-	QMP_PHY_INIT_CFG(QPHY_V4_PCS_UFS_TX_SMALL_AMP_DRV_LVL, 0x02),
-	QMP_PHY_INIT_CFG(QPHY_V4_PCS_UFS_TX_MID_TERM_CTRL1, 0x43),
-	QMP_PHY_INIT_CFG(QPHY_V4_PCS_UFS_DEBUG_BUS_CLKSEL, 0x1F),
-	QMP_PHY_INIT_CFG(QPHY_V4_PCS_UFS_RX_MIN_HIBERN8_TIME, 0xFF),
-	QMP_PHY_INIT_CFG(QPHY_V4_PCS_UFS_BIST_FIXED_PAT_CTRL, 0x0A),
-	QMP_PHY_INIT_CFG(QPHY_V4_PCS_UFS_RX_SIGDET_CTRL1, 0x0E),
+	// wtf? qcom pls stop stripping your defines
+	QMP_PHY_INIT_CFG(0x014, 0x1F),
+	QMP_PHY_INIT_CFG(0x018, 0x00),
+	QMP_PHY_INIT_CFG(0x024, 0x2A),
+	QMP_PHY_INIT_CFG(0x14C, 0x03),
+	QMP_PHY_INIT_CFG(0x034, 0x00),
+	QMP_PHY_INIT_CFG(0x03C, 0x00),
+	QMP_PHY_INIT_CFG(0x040, 0x64),
+	QMP_PHY_INIT_CFG(0x048, 0x30),
+	QMP_PHY_INIT_CFG(0x078, 0x04),
+	QMP_PHY_INIT_CFG(0x0B8, 0x04),
+	QMP_PHY_INIT_CFG(0x0C4, 0x08),
+	QMP_PHY_INIT_CFG(0x0C8, 0x0F),
+	QMP_PHY_INIT_CFG(0x0CC, 0xFA),
+	QMP_PHY_INIT_CFG(0x0D4, 0x48),
+	QMP_PHY_INIT_CFG(0x0DC, 0x0A),
+	QMP_PHY_INIT_CFG(0x0E0, 0x1C),
+	QMP_PHY_INIT_CFG(0x0E4, 0x01),
+	QMP_PHY_INIT_CFG(0x148, 0x00),
+	QMP_PHY_INIT_CFG(QPHY_V4_PCS_UFS_RX_MIN_HIBERN8_TIME, 0x1C),
+	QMP_PHY_INIT_CFG(0x164, 0x15),
+	QMP_PHY_INIT_CFG(0x1B4, 0x00),
+	QMP_PHY_INIT_CFG(0x1B8, 0x69),
+	QMP_PHY_INIT_CFG(0x1C0, 0x1E),
+	QMP_PHY_INIT_CFG(0x1C4, 0x0F),
 };
 
 struct qmp_ufs_offsets {
@@ -1625,18 +1221,6 @@ static const struct qmp_ufs_cfg sxr2250_ufsphy_cfg = {
 		.pcs		= sxr2250_ufsphy_pcs,
 		.pcs_num	= ARRAY_SIZE(sxr2250_ufsphy_pcs),
 	},
-	.tbls_hs_b = {
-		.serdes		= sxr2250_ufsphy_hs_b_serdes,
-		.serdes_num	= ARRAY_SIZE(sxr2250_ufsphy_hs_b_serdes),
-	},
-	.tbls_hs_g4 = {
-		.tx		= sxr2250_ufsphy_hs_g4_tx,
-		.tx_num		= ARRAY_SIZE(sxr2250_ufsphy_hs_g4_tx),
-		.rx		= sxr2250_ufsphy_hs_g4_rx,
-		.rx_num		= ARRAY_SIZE(sxr2250_ufsphy_hs_g4_rx),
-		.pcs		= sxr2250_ufsphy_hs_g4_pcs,
-		.pcs_num	= ARRAY_SIZE(sxr2250_ufsphy_hs_g4_pcs),
-	},
 	.clk_list		= sxr2250_ufs_phy_clk_l,
 	.num_clks		= ARRAY_SIZE(sxr2250_ufs_phy_clk_l),
 	.vreg_list		= qmp_ufs_vreg_l,
@@ -1706,121 +1290,12 @@ static void qmp_ufs_pcs_init(struct qmp_ufs_priv *qmp, const struct qmp_ufs_cfg_
 static void qmp_ufs_init_registers(struct qmp_ufs_priv *qmp, const struct qmp_ufs_cfg *cfg)
 {
 	/* We support 'PHY_MODE_UFS_HS_B' mode & 'UFS_HS_G3' submode for now. */
-	//qmp_ufs_serdes_init(qmp, &cfg->tbls);
-	
-	//qmp_ufs_serdes_init(qmp, &cfg->tbls_hs_b);
-	//qmp_ufs_serdes_init(qmp, &cfg->tbls_hs_g4);
-	
-	//qmp_ufs_lanes_init(qmp, &cfg->tbls);
-	
-	//qmp_ufs_lanes_init(qmp, &cfg->tbls_hs_b);
-	//qmp_ufs_lanes_init(qmp, &cfg->tbls_hs_g4);
-	
-	//qmp_ufs_pcs_init(qmp, &cfg->tbls);
-	
-	//qmp_ufs_pcs_init(qmp, &cfg->tbls_hs_b);
-	//qmp_ufs_pcs_init(qmp, &cfg->tbls_hs_g4);
+	qmp_ufs_serdes_init(qmp, &cfg->tbls);
+	qmp_ufs_serdes_init(qmp, &cfg->tbls_hs_b);
+	qmp_ufs_serdes_init(qmp, &cfg->tbls_hs_g4);
 
-	*(volatile unsigned int*)0x1D87C04 = 0x1;
-*(volatile unsigned int*)0x1D87094 = 0xd9;
-*(volatile unsigned int*)0x1D87158 = 0x11;
-*(volatile unsigned int*)0x1D870A4 =    1;
-*(volatile unsigned int*)0x1D87058 =  0xF;
-*(volatile unsigned int*)0x1D87124 =    0;
-*(volatile unsigned int*)0x1D871BC = 0x11;
-*(volatile unsigned int*)0x1D870BC = 0x98;
-*(volatile unsigned int*)0x1D87074 =    6;
-*(volatile unsigned int*)0x1D8707C = 0x16;
-*(volatile unsigned int*)0x1D87084 = 0x36;
-*(volatile unsigned int*)0x1D870AC = 0x32;
-*(volatile unsigned int*)0x1D870B0 =  0xF;
-*(volatile unsigned int*)0x1D871AC = 0xAC;
-*(volatile unsigned int*)0x1D871B0 = 0x1E;
-*(volatile unsigned int*)0x1D87484 =    5;
-*(volatile unsigned int*)0x1D874C0 =  0xC;
-*(volatile unsigned int*)0x1D87720 = 0x24;
-*(volatile unsigned int*)0x1D8771C =  0xF;
-*(volatile unsigned int*)0x1D87724 = 0x1E;
-*(volatile unsigned int*)0x1D87734 = 0x44;
-*(volatile unsigned int*)0x1D87728 = 0x18;
-*(volatile unsigned int*)0x1D87630 =  0xA;
-*(volatile unsigned int*)0x1D87634 = 0x4B;
-*(volatile unsigned int*)0x1D87644 = 0xB1;
-*(volatile unsigned int*)0x1D8763C = 0x80;
-*(volatile unsigned int*)0x1D87648 = 0x80;
-*(volatile unsigned int*)0x1D87680 = 0x5B;
-*(volatile unsigned int*)0x1D876EC =    6;
-*(volatile unsigned int*)0x1D876F0 = 0x4E;
-*(volatile unsigned int*)0x1D876F4 = 0x1D;
-*(volatile unsigned int*)0x1D87624 =    4;
-*(volatile unsigned int*)0x1D87628 =    4;
-*(volatile unsigned int*)0x1D87714 =    0;
-*(volatile unsigned int*)0x1D87700 = 0x10;
-*(volatile unsigned int*)0x1D876F8 = 0xC0;
-*(volatile unsigned int*)0x1D876FC =    0;
-*(volatile unsigned int*)0x1D87784 = 0xE0;
-*(volatile unsigned int*)0x1D87788 = 0xC8;
-*(volatile unsigned int*)0x1D8778C = 0xC8;
-*(volatile unsigned int*)0x1D87790 = 0x3B;
-*(volatile unsigned int*)0x1D87794 = 0xB1;
-*(volatile unsigned int*)0x1D8777C = 0x3B;
-*(volatile unsigned int*)0x1D87D54 =    6;
-*(volatile unsigned int*)0x1D87D58 = 0x6D;
-*(volatile unsigned int*)0x1D87C30 =  0xA;
-*(volatile unsigned int*)0x1D87C38 =    2;
-*(volatile unsigned int*)0x1D87C2C =    3;
-*(volatile unsigned int*)0x1D87C0C = 0x16;
-*(volatile unsigned int*)0x1D87C10 = 0xD8;
-*(volatile unsigned int*)0x1D87D60 = 0xAA;
-*(volatile unsigned int*)0x1D87D68 =    6;
-*(volatile unsigned int*)0x1D87C74 =    3;
-*(volatile unsigned int*)0x1D87CB4 =    3;
-*(volatile unsigned int*)0x1D8700C =  0xA;
-*(volatile unsigned int*)0x1D8717C =    6;
-*(volatile unsigned int*)0x1D87154 = 0x31;
-*(volatile unsigned int*)0x1D8704C =    2;
-*(volatile unsigned int*)0x1D87044 = 0x14;
-*(volatile unsigned int*)0x1D8709C = 0x28;
-*(volatile unsigned int*)0x1D870A8 =    0;
-*(volatile unsigned int*)0x1D87108 =    0;
-*(volatile unsigned int*)0x1D87120 = 0xFF;
-*(volatile unsigned int*)0x1D87110 = 0x53;
-*(volatile unsigned int*)0x1D87114 =    2;
-*(volatile unsigned int*)0x1D87138 = 0xFF;
-*(volatile unsigned int*)0x1D8713C = 0x3F;
-*(volatile unsigned int*)0x1D870EC = 0x3F;
-*(volatile unsigned int*)0x1D870F0 =    0;
-*(volatile unsigned int*)0x1D8745C =    0;
-*(volatile unsigned int*)0x1D87578 = 0x16;
-*(volatile unsigned int*)0x1D87568 =    6;
-*(volatile unsigned int*)0x1D87618 =  0xA;
-*(volatile unsigned int*)0x1D8761C =  0xA;
-*(volatile unsigned int*)0x1D87718 =    0;
-*(volatile unsigned int*)0x1D877F0 = 0xE8;
-*(volatile unsigned int*)0x1D87C14 = 0x1F;
-*(volatile unsigned int*)0x1D87C18 =    0;
-*(volatile unsigned int*)0x1D87C24 = 0x2A;
-*(volatile unsigned int*)0x1D87D4C =    3;
-*(volatile unsigned int*)0x1D87C34 =    0;
-*(volatile unsigned int*)0x1D87C3C =    0;
-*(volatile unsigned int*)0x1D87C40 = 0x64;
-*(volatile unsigned int*)0x1D87C48 = 0x30;
-*(volatile unsigned int*)0x1D87C78 =    4;
-*(volatile unsigned int*)0x1D87CB8 =    4;
-*(volatile unsigned int*)0x1D87CC4 =    8;
-*(volatile unsigned int*)0x1D87CC8 =  0xF;
-*(volatile unsigned int*)0x1D87CCC = 0xFA;
-*(volatile unsigned int*)0x1D87CD4 = 0x48;
-*(volatile unsigned int*)0x1D87CDC =  0xA;
-*(volatile unsigned int*)0x1D87CE0 = 0x1C;
-*(volatile unsigned int*)0x1D87CE4 =    1;
-*(volatile unsigned int*)0x1D87D48 =    0;
-*(volatile unsigned int*)0x1D87D50 = 0x1C;
-*(volatile unsigned int*)0x1D87D64 = 0x15;
-*(volatile unsigned int*)0x1D87DB4 =    0;
-*(volatile unsigned int*)0x1D87DB8 = 0x69;
-*(volatile unsigned int*)0x1D87DC0 = 0x1E;
-*(volatile unsigned int*)0x1D87DC4 =  0xF;
+	qmp_ufs_lanes_init(qmp, &cfg->tbls);
+	qmp_ufs_pcs_init(qmp, &cfg->tbls);
 }
 
 static int qmp_ufs_do_reset(struct qmp_ufs_priv *qmp)
@@ -1855,9 +1330,6 @@ static int qmp_ufs_power_on(struct phy *phy)
 	unsigned int val;
 	int ret;
 
-	status = pcs + cfg->regs[QPHY_PCS_READY_STATUS];
-	printf("asdf0 %08x\n", readl(status));
-
 	ret = qmp_ufs_do_reset(qmp);
 	if (ret) {
 		dev_err(phy->dev, "qmp reset failed\n");
@@ -1865,20 +1337,15 @@ static int qmp_ufs_power_on(struct phy *phy)
 	}
 
 	udelay(10);
-	printf("asdf1 %08x\n", readl(status));
 
 	/* Hold PHY is reset while writing calib registers */
 	if (!cfg->no_pcs_sw_reset)
 		qphy_setbits(pcs, cfg->regs[QPHY_SW_RESET], SW_RESET);
-	printf("asdf2 %08x\n", readl(status));
 
 	/* Power up PHY */
 	qphy_setbits(pcs, cfg->regs[QPHY_PCS_POWER_DOWN_CONTROL], SW_PWRDN);
-	printf("asdf3 %08x\n", readl(status));
 
 	qmp_ufs_init_registers(qmp, cfg);
-	printf("asdf4 %08x\n", readl(status));
-
 	if (cfg->no_pcs_sw_reset) {
 		ret = qmp_ufs_do_reset(qmp);
 		if (ret) {
@@ -1886,34 +1353,22 @@ static int qmp_ufs_power_on(struct phy *phy)
 			return ret;
 		}
 	}
-	printf("asdf5 %08x\n", readl(status));
 
 	/* Pull PHY out of reset state */
 	if (!cfg->no_pcs_sw_reset)
 		qphy_clrbits(pcs, cfg->regs[QPHY_SW_RESET], SW_RESET);
-	printf("asdf6 %08x\n", readl(status));
 
 	udelay(50);
 
 	/* start PCS and SERDES */
 	qphy_setbits(pcs, cfg->regs[QPHY_START_CTRL], SERDES_START);
-	printf("asdf7 %08x\n", readl(status));
 
 	status = pcs + cfg->regs[QPHY_PCS_READY_STATUS];
-	printf("%p %08x\n", status, readl(status));
 	ret = readl_poll_timeout(status, val, (val & PCS_READY), PHY_INIT_COMPLETE_TIMEOUT);
 	if (ret) {
-		printf("%p %08x\n", status, readl(status));
 		dev_err(phy->dev, "phy initialization timed-out\n");
 		return ret;
 	}
-	printf("asdf8\n");
-
-	writel(0, 0x1D84034);
-	udelay(10);
-	writel(1, 0x1D84034);
-	udelay(10);
-	printf("asdf9 %x\n", readl(0x1D84034));
 
 	return 0;
 }
