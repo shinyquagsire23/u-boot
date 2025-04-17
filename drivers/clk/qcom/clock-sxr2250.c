@@ -1,10 +1,9 @@
 // SPDX-License-Identifier: BSD-3-Clause
 /*
- * Clock drivers for Qualcomm sm8250
+ * Clock drivers for Qualcomm sxr2250
  *
- * (C) Copyright 2024 Linaro Ltd.
+ * (C) Copyright 2025 Linaro Ltd.
  */
-// based on 8250
 
 #include <clk-uclass.h>
 #include <dm.h>
@@ -16,21 +15,19 @@
 
 #include "clock-qcom.h"
 
-#define GCC_SDCC2_APPS_CLK_SRC_REG 0x2400c // DONE
+#define APCS_GPLL9_STATUS   (0x9000)
+#define APCS_GPLLX_ENA_REG  (0x62018)
 
-#define APCS_GPLL9_STATUS 0x9000 // DONE
-#define APCS_GPLLX_ENA_REG 0x62018 // DONE
+#define USB30_PRIM_MASTER_CLK_CMD_RCGR      (0x49028)
+#define USB30_PRIM_MOCK_UTMI_CLK_CMD_RCGR   (0x49040)
+#define USB3_PRIM_PHY_AUX_CMD_RCGR          (0x4906c)
 
-#define USB30_PRIM_MASTER_CLK_CMD_RCGR 0x49028 // DONE
-#define USB30_PRIM_MOCK_UTMI_CLK_CMD_RCGR 0x49040 // DONE
-#define USB3_PRIM_PHY_AUX_CMD_RCGR 0x4906c // DONE
-
-#define GCC_QUPV3_WRAP0_S6_RCG_REG (0x27754) // DONE
-#define GCC_UFS_PHY_AXI_RCG_REG (0x8702c)
-#define GCC_UFS_PHY_ICE_CORE_RCG_REG (0x87074)
+#define GCC_SDCC2_APPS_CLK_SRC_REG      (0x2400c)
+#define GCC_QUPV3_WRAP0_S6_RCG_REG      (0x27754)
+#define GCC_UFS_PHY_AXI_RCG_REG         (0x8702c)
+#define GCC_UFS_PHY_ICE_CORE_RCG_REG    (0x87074)
 #define GCC_UFS_PHY_UNIPRO_CORE_RCG_REG (0x8708c)
 
-// DONE
 static const struct freq_tbl ftbl_gcc_qupv3_wrap0_s2_clk_src[] = {
     F(7372800, CFG_CLK_SRC_GPLL0_EVEN, 1, 384, 15625),
     F(14745600, CFG_CLK_SRC_GPLL0_EVEN, 1, 768, 15625),
@@ -47,7 +44,6 @@ static const struct freq_tbl ftbl_gcc_qupv3_wrap0_s2_clk_src[] = {
     {}
 };
 
-// DONE
 static const struct freq_tbl ftbl_gcc_sdcc2_apps_clk_src[] = {
     F(400000, CFG_CLK_SRC_CXO, 12, 1, 4),
     F(25000000, CFG_CLK_SRC_GPLL0_EVEN, 12, 0, 0),
@@ -79,7 +75,6 @@ static const struct freq_tbl ftbl_gcc_ufs_phy_unipro_core_clk_src[] = {
     { }
 };
 
-// DONE
 static struct pll_vote_clk gpll9_vote_clk = {
     .status = APCS_GPLL9_STATUS,
     .status_bit = BIT(31),
@@ -144,7 +139,6 @@ static ulong sxr2250_set_rate(struct clk *clk, ulong rate)
     }
 }
 
-// WIP
 static const struct gate_clk sxr2250_clks[] = {
     //GCC_GPLL0
     //GCC_GPLL0_OUT_EVEN
@@ -205,11 +199,9 @@ static const struct gate_clk sxr2250_clks[] = {
     GATE_CLK(GCC_QUPV3_WRAP_0_S_AHB_CLK, 0x62008, BIT(7)),
     GATE_CLK(GCC_QUPV3_WRAP_1_M_AHB_CLK, 0x62008, BIT(20)),
     GATE_CLK(GCC_QUPV3_WRAP_1_S_AHB_CLK, 0x62008, BIT(21)),
-    
     GATE_CLK(GCC_SDCC2_AHB_CLK, 0x2400c, BIT(0)),
     GATE_CLK(GCC_SDCC2_APPS_CLK, 0x24004, BIT(0)),
     //GCC_SDCC2_APPS_CLK_SRC
-
     GATE_CLK(GCC_UFS_0_CLKREF_EN, 0x9c000, BIT(0)),
     GATE_CLK(GCC_UFS_PHY_AHB_CLK, 0x87020, BIT(0)),
     GATE_CLK(GCC_UFS_PHY_AXI_CLK, 0x87018, BIT(0)),
@@ -291,31 +283,6 @@ static int sxr2250_enable(struct clk *clk)
     return 0;
 }
 
-static int sxr2250_probe(struct udevice *dev) {
-    //struct msm_clk_data *data = (struct msm_clk_data *)dev_get_driver_data(dev);
-    //struct msm_clk_priv *priv = dev_get_priv(dev);
-
-    /*
-     * From Linux? TODO?
-     * Can't actually uncomment, it needs the parent clock-qcom device.
-     *
-     * Keep the clocks always-ON
-     * GCC_CAMERA_AHB_CLK, GCC_CAMERA_XO_CLK, GCC_DISP_AHB_CLK
-     * GCC_VIDEO_AHB_CLK, GCC_VIDEO_XO_CLK, GCC_GPU_CFG_AHB_CLK
-     * GCC_DISP1_AHB_CLK
-     */
-    /*qcom_gate_clk_en(priv, GCC_CAMERA_AHB_CLK);
-    qcom_gate_clk_en(priv, GCC_CAMERA_XO_CLK);
-    qcom_gate_clk_en(priv, GCC_DISP_AHB_CLK);
-    qcom_gate_clk_en(priv, GCC_VIDEO_AHB_CLK);
-    qcom_gate_clk_en(priv, GCC_VIDEO_XO_CLK);
-    qcom_gate_clk_en(priv, GCC_GPU_CFG_AHB_CLK);
-    qcom_gate_clk_en(priv, GCC_DISP1_AHB_CLK);*/
-
-    return 0;
-}
-
-// DONE
 static const struct qcom_reset_map sxr2250_gcc_resets[] = {
     [GCC_CAMERA_BCR] = { 0x36000 },
     [GCC_DISPLAY1_BCR] = { 0x2e000 },
@@ -359,42 +326,24 @@ static const struct qcom_reset_map sxr2250_gcc_resets[] = {
     [GCC_VIDEO_BCR] = { 0x42000 },
 };
 
-// diwali-gdsc.dtsi
-// GOOD
+// From diwali-gdsc.dtsi
 static const struct qcom_power_map sxr2250_gdscs[] = {
-    [GCC_PCIE_0_GDSC] = { 0x7b000 },    // good?
-    //[GCC_PCIE_0_PHY_GDSC] = { 0x7c000 },
-    //[GCC_PCIE_1_GDSC] = { 0x9d004 },
-    //[GCC_PCIE_1_PHY_GDSC] = { 0x9e000 },
-    [GCC_UFS_PHY_GDSC] = { 0x87000 },    // good?
-    [GCC_USB30_PRIM_GDSC] = { 0x49000 }, // good?
-    //[GCC_USB3_PHY_GDSC] = { 0x60018 },
+    [GCC_PCIE_0_GDSC] = { 0x7b000 },
+    [GCC_UFS_PHY_GDSC] = { 0x87000 },
+    [GCC_USB30_PRIM_GDSC] = { 0x49000 },
 };
 
-// IDK
 static const phys_addr_t sxr2250_gpll_addrs[] = {
     0x00100000, // GCC_GPLL0_MODE
-    //0x00101000, // GCC_GPLL1_MODE
-    //0x00102000, // GCC_GPLL2_MODE
-    //0x00103000, // GCC_GPLL3_MODE
     0x00104000, // GCC_GPLL4_MODE
-    //0x00174000, // GCC_GPLL5_MODE
-    //0x00113000, // GCC_GPLL6_MODE
-    //0x0011a000, // GCC_GPLL7_MODE
-    //0x0011b000, // GCC_GPLL8_MODE
     0x00109000, // GCC_GPLL9_MODE
-    //0x0011d000, // GCC_GPLL10_MODE
-    //0x0014a000, // GCC_GPLL11_MODE
 };
 
-// .cmd_rcgr
-// WIP
 static const phys_addr_t sxr2250_rcg_addrs[] = {
     0x00149028, // GCC_USB30_PRIM_MASTER_CMD_RCGR
     0x00149040, // GCC_USB30_PRIM_MOCK_UTMI_CMD_RCGR
     0x0014906c, // GCC_USB3_PRIM_PHY_AUX_CMD_RCGR
     0x00124014, // GCC_SDCC2_APPS_CMD_RCGR
-    //0x0012300c, // GCC_QUPV3_WRAP0_CORE_2X_CMD_RCGR
     0x00127014, // GCC_QUPV3_WRAP0_S0_CMD_RCGR
     0x00127148, // GCC_QUPV3_WRAP0_S1_CMD_RCGR
     0x0012727c, // GCC_QUPV3_WRAP0_S2_CMD_RCGR
@@ -402,7 +351,6 @@ static const phys_addr_t sxr2250_rcg_addrs[] = {
     0x001274e4, // GCC_QUPV3_WRAP0_S4_CMD_RCGR
     0x00127620, // GCC_QUPV3_WRAP0_S5_CMD_RCGR
     0x00127754, // GCC_QUPV3_WRAP0_S6_CMD_RCGR
-    //0x00123144, // GCC_QUPV3_WRAP1_CORE_2X_CMD_RCGR
     0x00128014, // GCC_QUPV3_WRAP1_S0_CMD_RCGR
     0x00128148, // GCC_QUPV3_WRAP1_S1_CMD_RCGR
     0x0012827c, // GCC_QUPV3_WRAP1_S2_CMD_RCGR
@@ -418,17 +366,13 @@ static const phys_addr_t sxr2250_rcg_addrs[] = {
     0x00187074, // GCC_UFS_PHY_ICE_CORE_CMD_RCGR
     0x0018708c, // GCC_UFS_PHY_UNIPRO_CORE_CMD_RCGR
     0x001870a8, // GCC_UFS_PHY_PHY_AUX_CMD_RCGR
-    //0x0010d00c, // GCC_RBCPR_MMCX_CMD_RCGR
-    //0x00106038, // GCC_PCIE_2_AUX_CMD_RCGR
 };
 
-// WIP
 static const char *const sxr2250_rcg_names[] = {
     "GCC_USB30_PRIM_MASTER_CMD_RCGR",
     "GCC_USB30_PRIM_MOCK_UTMI_CMD_RCGR",
     "GCC_USB3_PRIM_PHY_AUX_CMD_RCGR",
     "GCC_SDCC2_APPS_CMD_RCGR",
-    //"GCC_QUPV3_WRAP0_CORE_2X_CMD_RCGR",
     "GCC_QUPV3_WRAP0_S0_CMD_RCGR",
     "GCC_QUPV3_WRAP0_S1_CMD_RCGR",
     "GCC_QUPV3_WRAP0_S2_CMD_RCGR",
@@ -436,7 +380,6 @@ static const char *const sxr2250_rcg_names[] = {
     "GCC_QUPV3_WRAP0_S4_CMD_RCGR",
     "GCC_QUPV3_WRAP0_S5_CMD_RCGR",
     "GCC_QUPV3_WRAP0_S6_CMD_RCGR",
-    //"GCC_QUPV3_WRAP1_CORE_2X_CMD_RCGR",
     "GCC_QUPV3_WRAP1_S0_CMD_RCGR",
     "GCC_QUPV3_WRAP1_S1_CMD_RCGR",
     "GCC_QUPV3_WRAP1_S2_CMD_RCGR",
@@ -452,8 +395,6 @@ static const char *const sxr2250_rcg_names[] = {
     "GCC_UFS_PHY_ICE_CORE_CMD_RCGR",
     "GCC_UFS_PHY_UNIPRO_CORE_CMD_RCGR",
     "GCC_UFS_PHY_PHY_AUX_CMD_RCGR",
-    //"GCC_RBCPR_MMCX_CMD_RCGR",
-    //"GCC_PCIE_2_AUX_CMD_RCGR",
 };
 
 static struct msm_clk_data sxr2250_gcc_data = {
@@ -501,5 +442,4 @@ U_BOOT_DRIVER(gcc_sxr2250) = {
     .of_match = gcc_sxr2250_of_match,
     .bind = qcom_cc_bind,
     .flags = DM_FLAG_PRE_RELOC,
-    .probe = sxr2250_probe,
 };
