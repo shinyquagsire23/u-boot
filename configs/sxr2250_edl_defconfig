@@ -1,0 +1,25 @@
+# Configuration for building U-Boot to be flashed
+# to the uefi partition of QCM6490 dev boards with
+# the "Linux Embedded" partition layout (which have
+# a dedicated "uefi" partition for edk2/U-Boot)
+
+#include "qcom_edl_defconfig"
+
+# Otherwise buildman thinks this isn't an ARM platform
+CONFIG_ARM=y
+
+CONFIG_DEBUG_UART=y
+CONFIG_DEBUG_UART_MSM_GENI=y
+CONFIG_DEBUG_UART_ANNOUNCE=y
+CONFIG_DEBUG_UART_SKIP_INIT=y
+CONFIG_DEBUG_UART_BASE=0x998000
+CONFIG_DEBUG_UART_CLOCK=14745600
+
+CONFIG_DEFAULT_DEVICE_TREE="anorak/anorak"
+
+CONFIG_USE_DEFAULT_ENV_FILE=y
+CONFIG_DEFAULT_ENV_FILE="board/qualcomm/edl-sxr2250.env"
+
+CONFIG_OF_EMBED=y
+CONFIG_CLK_QCOM_DEBUG=y
+CONFIG_QCOM_UFS_FORCE_LOW_POWER_MODE=y
