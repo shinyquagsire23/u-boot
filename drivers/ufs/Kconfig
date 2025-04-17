@@ -33,6 +33,18 @@ config QCOM_UFS
 	  This selects the platform driver for the UFS host
 	  controller present on Qualcomm Snapdragon SoCs.
 
+config QCOM_UFS_FORCE_LOW_POWER_MODE
+	bool "Force low power mode for Qualcomm UFS Host Controller"
+	depends on QCOM_UFS
+	help
+	  This enables a low-power initialization sequence for the Qualcomm
+	  UFS Host Controller driver.
+
+	  If clocks or power are not expected to be fully initialized yet,
+	  or cannot be initialized, say Y here.
+
+	  If unsure, say N.
+
 config TI_J721E_UFS
 	bool "Glue Layer driver for UFS on TI J721E devices"
 	help

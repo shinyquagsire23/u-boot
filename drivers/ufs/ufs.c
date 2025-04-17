@@ -1773,8 +1773,8 @@ static int ufshcd_get_max_pwr_mode(struct ufs_hba *hba)
 	return ufshcd_ops_get_max_pwr_mode(hba, &hba->max_pwr_info);
 }
 
-static int ufshcd_change_power_mode(struct ufs_hba *hba,
-				    struct ufs_pa_layer_attr *pwr_mode)
+static int __maybe_unused ufshcd_change_power_mode(struct ufs_hba *hba,
+						   struct ufs_pa_layer_attr *pwr_mode)
 {
 	int ret;
 
@@ -1940,6 +1940,7 @@ int ufs_start(struct ufs_hba *hba)
 			"%s: Failed getting max supported power mode\n",
 			__func__);
 	} else {
+#ifndef CONFIG_QCOM_UFS_FORCE_LOW_POWER_MODE
 		ret = ufshcd_change_power_mode(hba, &hba->max_pwr_info.info);
 		if (ret) {
 			dev_err(hba->dev, "%s: Failed setting power mode, err = %d\n",
@@ -1947,7 +1948,7 @@ int ufs_start(struct ufs_hba *hba)
 
 			return ret;
 		}
-
+#endif
 		debug("UFS Device %s is up!\n", hba->dev->name);
 		ufshcd_print_pwr_info(hba);
 	}
